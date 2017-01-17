@@ -1,0 +1,84 @@
+.search_box{
+			width: 1210px;
+			height: 60px;
+			position: relative;
+			margin: 30px auto 0; 
+			/*z-index: 10*/
+		}
+		.logo{
+			position: relative;
+			float: left;
+			margin-top: 6px;
+			
+		}
+		.logo>a{
+			width: 226px;
+			height: 40px;
+			display: block;
+		}
+
+		.search_inf{
+			float: left;
+			margin-left: 334px;
+			position: relative;
+		}
+		.main_search{
+			position: relative;
+		}
+		.inputsearch{
+			height: 18px;
+			width: 407px;
+			border:1px solid #dfdfdf;
+			padding: 10px 16px 10px 20px;
+			float: left;
+			line-height: 18px;
+			font-size: 14px;
+
+		}
+		.subsearch{
+			border:1px solid #dfdfdf;
+			width: 40px;
+			height: 40px;
+			position: relative;
+			padding: 0;
+		}
+		.recommend{
+			position: absolute;
+			right: 56px;
+			top: 11px;
+			height: 18px;
+			line-height: 18px;
+			overflow: hidden;
+			z-index: 1;
+		}
+		.recommend li{
+			float: left;
+			background-color: #f0f0f0;
+			margin-left: 5px;
+			max-width: 50px;
+			padding: 0 4px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.recommend>li>a{
+			color: #3e3e3e;
+			white-space: nowrap;
+
+		}
+		.return{
+			border:1px solid #ebca4d;
+			background-color: #feda4e;
+			float: right;
+			position: relative;
+			padding: 7px 0;
+		}
+		.return a div{
+			float: left;
+			color: #404144;
+			font-size: 12px;
+			height: 24px;
+			width: 50px;
+			text-align: center;
+			line-height: 24px
+		}

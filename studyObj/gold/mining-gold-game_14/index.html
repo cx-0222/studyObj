@@ -1,0 +1,146 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml">
+<HEAD>
+<TITLE>黄金矿工</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<!--[if !mso]>
+<style>
+v\:*         { behavior: url(#default#VML) }
+</style>
+<![endif]-->
+<STYLE>
+#worker{
+	position:absolute;
+	width:23px;
+	height:19px;
+	left:282px;
+	top:34px;
+	z-Index:1;
+}
+#div{
+	position:absolute;
+	width:23px;
+	height:19px;
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=1,M12=0,M21=0,M22=1,SizingMethod="auto expand");
+	line-height:50px;
+	overflow:hidden;
+	z-Index:2;
+}
+#line{
+	position:absolute;
+	left:0;
+	top:0;
+	z-Index:3;
+}
+</STYLE>
+<script src="js/loadxml.js"></script>
+<script src="js/play.js"></script>
+<script>
+var $ = function (id) {
+//获取对象
+	return document.getElementById(id);
+};
+Array.prototype.RemoveAt=function(num)
+{
+	if(num<0)	return this;
+	return this.slice(0,num).concat(this.slice(num+1,this.length));
+}
+Array.prototype.indexOf=function(object) {
+    for (var i = 0, length = this.length; i < length; i++)
+      if (this[i] == object) return i;
+    return -1;
+}
+var pass = 1; //记录关数
+var div = null;
+var line = null;
+var baglist = 0;  //用户道具
+var getmoney = 0; //挖出金钱总数
+var t_int = null;
+var g_flag = false;
+var ns4 = (document.layers) ? true : false;
+var ie4 = (document.all) ? true : false;
+var flag = false;
+var b_flag = false;
+var g_flag = false;
+var xd = new xmlData(); //生成对象
+function gogo() 
+{
+	$("playtop").style.display = '';
+	$("playbg").style.display = '';
+	$("endbg").style.display = 'none';
+	$("goal").style.display = 'none';
+	$("goal").onclick = function () { return false;}
+	$("plat").style.display = '';
+	$("passno").innerText = pass;
+	$("times").innerText = xd.mtime;
+	$("goalcount").innerText = "$"+xd.goal;
+	$("nowcount").innerText = "$"+getmoney;
+	go();
+	TimeEvent();
+}
+function begin()
+{	
+	window.clearTimeout(t_int);
+	$("endbg").innerHTML = '<img src="images/start.jpg">';
+	$("goal").style.display = '';
+	$("goal").onclick = function () { gogo(); return false;}
+	$("ends").style.display = 'none';
+	xd.xmlFile = 'data/'+pass+'.xml';
+	xd.readXMLDOM();
+}
+function end()
+{
+	$("playtop").style.display = 'none';
+	$("playbg").style.display = 'none';
+	$("endbg").style.display = '';
+	$("plat").style.display = 'none';
+	$("endbg").innerHTML = '<img src="images/end.jpg">';
+	document.onkeydown = function () { return false;}
+	var msg = "恭喜你过关！";
+	if(getmoney<xd.goal) {
+		msg = "你没有达到目标分！重来一遍！";
+		pass = 1;
+		baglist = 0;
+		getmoney = 0; 
+	}else pass = pass+1;
+	$("ends").style.display = '';
+	$("ends").innerText = msg;
+	window.clearTimeout(t_int);
+}
+function resizeMe() {
+    window.resizeTo(635,630);
+} 
+</script>
+
+</head>
+
+<body onload="begin();window.resizeTo(635,630);" style="overflow:hidden;">
+<center>
+	<table borderColor=#0099cc cellSpacing=0 borderColorDark=#0099cc cellPadding=15 
+	width=450 borderColorLight=#0099cc border=1>
+	<tbody>
+		<tr>
+			<td id="gamebg">
+			<div id="playtop" align="center" style="display:none;"><img src="images/top.jpg" width="558"></div>
+			<div id="playbg" align="center" style="display:none;"><img style="WIDTH: 558px; HEIGHT: 339px" height="339" src="images/bg.jpg" width="558"></div>
+			<div id="endbg" align="center"><img src="images/start.jpg"></div>
+			<div id="goal" style="position:absolute;left:200px;top:180px;font-size:30pt;color:#6FDB4A;cursor:hand;" onclick="gogo();">$650</div>
+			<div id="ends" style="position:absolute;left:200px;top:160px;font-size:18pt;color:#EED62B;cursor:hand;width:270px;" onclick="begin();"></div>
+			</td>
+		</tr>
+	</tbody>
+	</table>
+</center>
+<div id="plat" style="display:none;">
+	<div id="worker"><img src="images/worker2.gif" id="wimg"></div>
+	<div id="div"><img src="images/hook.gif"></div>
+	<v:line id="line"></v:line>
+	<div id="show"></div>
+	<div style="position:absolute;left:40px;top:40px;font-size:15pt;"><b>金钱：<span id="nowcount" style="color:#6FDB4A;"></span></b></div>
+	<div style="position:absolute;left:40px;top:76px;font-size:15pt;"><b>目标钱数：<span id="goalcount" style="color:#EED62B;"></span></b></div>
+	<div id="times" style="position:absolute;left:510px;top:36px;font-size:33pt;">40</div>
+	<div style="position:absolute;left:520px;top:80px;font-size:10pt;">第&nbsp;<b><span id="passno" style="color:#ff0000;"></span></b>&nbsp;关</div>
+	<div id="shots" style="position:absolute;left:380px;top:76px;"></div>
+</div>
+<div id="debug" style="position:absolute;left:30px;top:536px;"></div>
+</BODY>
+</HTML>

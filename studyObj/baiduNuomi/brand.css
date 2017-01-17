@@ -1,0 +1,132 @@
+.brand_box{
+			width: 1210px;
+			height: 390px;
+			margin: 0 auto;
+			/*background-color: #177AA9*/
+		}
+		.brand_l{
+			float: left;
+		}
+		.brand_r{
+			float: right;
+		}
+		.brand_title{
+			width: 964px;
+			height: 40px;
+			padding-top: 20px;
+			/*background-color: red;*/
+			position: relative;
+		}
+		.brand_title_1{
+			font-size: 20px;
+			line-height: 40px;
+			float: left;
+		}
+		.brand_title_2{
+			font-size: 16px;
+			line-height: 22px;
+			color: #999;
+			margin: 13px 0 0 5px;
+			float: left;
+		}
+		.brand_title_3{
+			font-size: 12px;
+			color: #999;
+			line-height: 32px;
+			margin-top: 8px;
+			float: right;
+		}
+		.brand_pic{
+			width: 964px;
+			height: 330px;
+			/*background-color: #FFFF43*/
+		}
+		.brand_pic_l{
+			width: 227px;
+			height: 330px;
+			float: left;
+		}
+		.brand_pic_r{
+			float: left;
+			cursor: pointer;
+		}
+		.brand_pic_r ul{
+			width: 735px;
+			height: 328px;
+			/*padding-top: 1px;*/
+			border: 1px solid #DFDFDF;
+		}
+		.brand_pic_r ul li{
+			width: 146px;
+			height: 77px;
+			float: left;
+			text-align: center;
+			padding-top: 4px;
+			border-right: 1px solid #DFDFDF;
+			border-bottom: 1px solid #DFDFDF;
+		}
+		.brand_pic_r ul li img{
+			width: 106px;
+			height: 75px;
+		}
+		.hot_topic{
+			width: 226px;
+			height: 336px;
+			position: relative;
+			float: right;
+			/*background-color: red*/
+		}
+		h2{
+			font-size: 20px;
+			font-weight: 700;
+			color: #444
+			height: 40px;
+			padding-top: 20px;
+			line-height: 40px;
+		}
+		.fengyunbang{
+			width: 224px;
+			height: 136px;
+			border: 1px solid #dfdfdf
+		}
+		.fengyunbang_l{
+			float: left;
+			width: 107px;
+			margin:20px 0 0 17px;
+		}
+		.fengyunbang_l h3{
+			font-size: 16px;
+			color: #444;
+			font-weight: 700;
+			margin-bottom: 10px;
+			line-height: 1;
+		}
+		.fengyunbang_l p{
+			color: #8c8c8c;
+			font-size:12px;
+		}
+		.fengyunbang_r{
+			float: right;
+			width: 80px;
+			height: 90px;
+			margin-right: 20px;
+			margin-top: 30px;
+			overflow: hidden;
+			position: relative;
+		}
+		.fengyunbang_r img{
+			position: absolute;
+			top: -17px;
+			left: -12px;
+		}
+		.shoppingMall a{
+			width: 225px;
+			border: 1px solid #dfdfdf;
+			display: block;
+			margin-top: 20px;
+		}
+		.shoppingMall a img{
+			width: 225px;
+			height: 110px;
+			/*border: 0*/
+		}

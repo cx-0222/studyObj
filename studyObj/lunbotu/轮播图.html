@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    input.active {
+        background-color: green;
+    }
+    
+    #wrap {
+        width: 750px;
+        height: 500px;
+        border: 1px solid red;
+        position: relative;
+        /*overflow: hidden;*/
+    }
+    
+    #middle {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 500px;
+    }
+    
+    #middle img {
+        float: left;
+    }
+    </style>
+</head>
+
+<body>
+    <input id="last" type="button" value="上一步" />
+    <input id="next" value="下一步" type="button" />
+    <div class="btnWrap">
+        <input class="active" type="button" value="按钮1" />
+        <input type="button" value="按钮2" />
+        <input type="button" value="按钮3" />
+        <input type="button" value="按钮4" />
+    </div>
+    <div id="wrap">
+        <div id="middle">
+            <img src="img/1.jpg" alt="" />
+            <img src="img/2.jpg" alt="" />
+            <img src="img/3.jpg" alt="" />
+            <img src="img/4.jpg" alt="" />
+        </div>
+    </div>
+</body>
+<script src="tween.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+var last = document.querySelector("#last");
+var next = document.querySelector("#next");
+var inputs = document.querySelectorAll(".btnWrap>input");
+
+var middle = document.querySelector("#middle");
+var imgs = document.querySelectorAll("#middle>img");
+
+ middle.style.width = imgs[0].offsetWidth * imgs.length + "px";
+
+var index = 0;
+
+var timer = null;
+
+function nextFn() {
+    index++;
+    if (index > imgs.length - 1) {
+        index = 0;
+    }
+}
+
+
+function move() {
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].className = "";
+    }
+    inputs[index].className = "active";
+
+    var end = -index * imgs[0].offsetWidth; //终点
+    var start = middle.offsetLeft; //起点
+    var change = end - start;
+    var t = 0;
+    var d = 40;
+
+    clearInterval(timer);
+    timer = setInterval(function() {
+
+        t++;
+        if (t >= d) {
+            clearInterval(timer);
+        }
+        middle.style.left = Tween.Back.easeOut(t, start, change, d) + "px";
+    }, 30);
+}
+
+
+function resetTimer() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(function() {
+        nextFn();
+        move();
+    }, 3000);
+
+}
+
+//自动播放计时器
+var autoTimer = setInterval(function() {
+
+    nextFn();
+    move();
+}, 3000);
+
+next.onclick = function() {
+    nextFn();
+    move();
+    resetTimer();
+}
+
+last.onclick = function() {
+
+    index--;
+    if (index < 0) {
+        index = imgs.length - 1;
+    }
+    move();
+    resetTimer();
+}
+
+// 点击按钮实现对应图片的滚动
+for (var i = 0; i < inputs.length; i++) {
+    inputs[i].index = i;
+    inputs[i].onclick = function() {
+
+        index = this.index;
+        move();
+        resetTimer();
+    }
+}
+</script>
+
+</html>

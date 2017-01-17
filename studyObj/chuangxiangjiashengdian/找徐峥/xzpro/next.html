@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/demo.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<script src="js/zepto.min.js"></script>
+	<script src="js/touch.js"></script>
+	<script>
+	window.onload = function(){
+	var loading_mengban = document.getElementById('loading_mengban');
+	var pic_load =["img/baobei.png","img/bg.jpg","img/xuzheng.png","img/chip1.png","img/chip2.png","img/chip3.png","img/chip4.png","img/chip5.png","img/chip6.png","img/chip7.png","img/chip8.png","img/color_yan.png","img/CSSatyr.png","img/game_info_bt.png","img/kuang_bg.png","img/one_guan_pic.png","img/one_pic1.png","img/one_pic2.png","img/one_pic3.png","img/person_kuang.png","img/tietou.png","img/vivo_mobile.png","img/xuzheng_kuang.png","img/xuzheng_succ_kuang.png","img/music_o.png","img/songs_p.png"];
+	var n = 0;
+	sound.play();
+	sound.pause();
+	for (var i = 0; i < pic_load.length; i++) {
+		var loding_pic = new Image();
+			loding_pic.src = pic_load[i];
+		loding_pic.onload = function(){
+			n++;
+			// alert(n/pic_load.length);
+			if ((n/pic_load.length)>0.8) {
+				loading_mengban.style.display="none";
+				timerFn();
+				
+			}
+		}
+	}
+	// clearInterval(timer);
+}
+
+
+
+
+	</script>
+</head>
+<body>
+	<div id="audiocontainer" style="display:none">
+		<audio id="background_sound" loop="true"  preload>
+		    <source src="sound/bg.mp3">
+		</audio>
+		<audio id="bgsound" loop="true" autoplay preload>
+		    <source src="sound/daojishi.mp3">
+		</audio>
+		<audio id="sound" preload>
+		    <source src="sound/false.mp3">
+		</audio>
+		<audio id="false_sound" preload>
+		    <source src="sound/false_prize.mp3">
+		</audio>
+		<audio id="succ_sound" preload>
+		    <source src="sound/succ_prize.mp3">
+		</audio>
+	</div>
+	
+
+
+	<div id="loading_mengban">
+		<span>去往行星途中，请稍后......</span>
+	</div>
+	<div class="game_wrap" >
+		<div id="music" class="music_js">
+			<img src="img/songs_p.png" alt="" id="music_a">
+		</div>
+		<h2 class="game_title">第一关 水星</h2>
+		<div id="one_pic_one" >
+			<img src="img/one_pic1.png" alt="">
+		</div>
+		<div id="one_pic_two">
+			<img src="img/one_pic2.png" alt="">
+		</div>
+		<div id="one_pic_three">
+			<img src="img/one_pic3.png" alt="">
+		</div>
+		<div class="kuang_wrap">
+			<div class="time_wrap"><span id="time"></span></div>
+			<div class="person_wrap">
+				<!-- <div class="person_kuang"></div> -->
+				<!-- <div class="person_kuang"><img src="img/xuzheng.png" alt=""></div> -->
+			</div>
+		</div>
+		<div class="suipian_wrap">
+			<div class="suipian_bg">
+				<h3></h3>
+				<div class="suipian_pic">
+					<var class="pic1"></var>
+				</div>
+				<p></p>
+				<span></span>
+			</div>
+		</div>
+			<div id="vivo_txt_wrap">
+			</div>
+		<div class="deb_wrap">
+
+			<div class="deb_one">
+				<img src="img/chip2.png" alt="">
+				<span class="">双2.5D弧面玻璃</span>
+			</div>
+			<div class="deb_two">
+				<img src="img/chip1.png" alt="">
+				<span class="">Funtouch OS系统</span>
+			</div>
+			<div class="deb_three">
+				<img src="img/chip3.png" alt="">
+				<span>知性美颜系统</span>
+			</div>
+			<div class="deb_four">
+				<img src="img/chip4.png" alt="">
+				<span>眼球识别加密系统</span>
+			</div>
+			<div class="deb_five">
+				<img src="img/chip5.png" alt="">
+				<span>1300万像素镜头</span>
+			</div>
+			<div class="deb_six">
+				<img src="img/chip6.png" alt="">
+				<span>Hi-Fi音质耳放</span>
+			</div>
+			<div class="deb_seven">
+				<img src="img/chip7.png" alt="">
+				<span>八核1.7GHz处理器</span>
+			</div>
+			<div class="deb_eight">
+				<img src="img/chip8.png" alt="">
+				<span>PDAF快速相位对焦系统</span>
+			</div>
+			<div class="vivo_phone">
+				<img src="img/vivo_mobile.png" alt="">
+				<div class="vivo_txt">
+					<p>成功合体</p>
+					<p>距离启动神秘力量</p>
+					<p>还差最后一步</p>
+					<p>请点击......</p>
+					<div class="draw_b">
+						<span>开始抽奖</span>
+					</div>
+					<div class="game_txt_b">
+						<span>游戏说明</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="draw_mengban">
+			<div class="draw_mar">
+			<div class="draw_kuang_sucss">
+				<div class="sucss_wrap">
+					<div class="prize_Wrap">
+						<p>恭喜你获得</p>
+						<p class="prize">vivo X5pro一台</p>
+					</div>
+					<form action="javascript:void(0)">
+					<div class="in_contact">
+						<div class="name_wrap">
+							<span>姓名：</span><input type="text" id="name_person" name="user">
+						</div>
+						<div class="phone_number_wrap">
+							<span>手机号码：</span><input type="text" id="phone_num" name="phonenum">
+						</div>
+					</div>
+					<div class="sub">
+						<input id="refer" value="提交信息" type="submit">
+					</div>
+					</form>
+				</div>
+			</div>
+			</div>
+		</div>
+		<div class="false_mengban">
+			<div class="draw_kuang_false">
+				<div class="false_wrap">
+					<h4>很遗憾</h4>
+					<p>你没有抽中奖品，再玩一次吧!</p>
+					<div class="back_b"><span>返回游戏</span></div>
+				</div>
+			</div>
+		</div>
+		<div class="game_false_mengban">
+			<div class="game_kuang_false">
+				<div class="game_false_wrap">
+					<h4>很遗憾</h4>
+					<p>你没有找齐徐峥的8个分身</p>
+					<p>看来他要一直囧在宇宙太阳系了</p>
+					<div class="try_b"><span>再试一次</span></div>
+					<div class="game_two_b"><span>游戏说明</span></div>
+				</div>
+			</div>
+		</div>
+	<div class="game_info_mengban"></div>
+	<div id="game_info_wrap">
+    <h3>找徐峥 送vivo</h3>
+    <img src="img/game_info_bt.png" id="game_info_close">
+   <div id="game_info">
+    <div id="content">
+     <h4>游戏规则：</h4>
+     <p>1.玩家要在规定时间内，依次从2*2至7*7的方格中找徐铮。点对徐铮，即可过关。</p>
+     <p>2.每找到一个徐铮，得到一个vivo手机“碎片”。集齐8块“碎片”，即获得一次抽奖机会。</p>
+     <p>3.中奖玩家请正确填写信息。信息填写错误或未填写的玩家将被取消中奖资格。</p>
+     <p>4.每个ID只有一次中奖机会。</p>
+     <p>5.恶意刷奖的玩家一经发现将取消抽奖资格。</p>
+     <h4>活动时间：</h4>
+     <p>2015年9月28至10月2日</p>
+     <h4>游戏奖励：</h4>
+     <p>一等奖：vivo X5Pro智能手机 2台</p>
+     <p>二等奖：vivo充电宝 10个</p>
+     <p>三等奖：vivo耳机 20个</p>
+     <p>四等奖：《港囧》电影票20套（每套2张）</p>
+     <p>五等奖：《港囧》主创签名剧照 50张</p>
+     <p>六等奖：vivo官方旗舰店100元代金券 20张</p>
+     <p>注：电影票为格瓦拉兑换券，中奖玩家请自行兑换</p>
+    </div>
+    <div id="scroll">
+     <div id="scrollbtn"></div>
+    </div>
+   	</div>
+ 	</div>
+ 	<!-- 彩带效果 -->
+	<div id="color_ribbon">
+		<!-- <img src="img/ribbon1.png"> -->
+		<img src="img/ribbon2.png">
+		<!-- <img src="img/ribbon3.png"> -->
+		<img src="img/ribbon4.png">
+		<!-- <img src="img/ribbon5.png"> -->
+		<img src="img/ribbon1.png">
+		<!-- <img src="img/ribbon2.png"> -->
+		<img src="img/ribbon3.png">
+		<!-- <img src="img/ribbon4.png"> -->
+		<img src="img/ribbon5.png">
+	</div>
+
+
+</div>
+
+	
+	
+	<script src="js/demo.js"></script>
+
+	<script src="js/ajax.js"></script>
+	<script>
+	var name_person = document.getElementById("name_person");
+	var phone_num = document.getElementById('phone_num');
+	var refer = document.getElementById('refer');
+	var false_sound = document.getElementById('false_sound');
+	var succ_sound = document.getElementById('succ_sound');
+	refer.addEventListener("touchstart",function(){ 
+		// window.location.href="top/top.html";
+	var tel =phone_num.value; //获取手机号
+	//如果手机号码不能通过验证
+	var tel_reg = /^1\d{10}$/;
+
+		if(tel=="" || name_person.value==""){
+			alert("请输出完整信息");
+		}
+		else if(tel_reg.test(tel)==false){
+ 			alert("请重新输入正确的手机号码");
+		}
+		if(tel_reg.test(tel)==true && tel!="" && name_person.value!=""){
+			window.location.href='index.html';
+		}
+	},false);
+
+
+	var prizearr = ["vivo X5pro一台","港囧电影票一套","vivo充电宝一个","vivo耳机一个","签名剧照一张","vivo官方旗舰店100元代金券",""];
+
+
+ 	function choujiang(){
+ 		var rnd = Math.floor(Math.random()*6);
+ 		if (rnd==0 ||rnd ==1 || rnd ==2 || rnd ==3 ||rnd==4 ||rnd==5) {
+ 			$('#color_ribbon').css("display",'block');
+ 			$('.prize').html(prizearr[rnd]);
+ 			$('.draw_mengban').css("display","block");
+ 			succ_sound.play();
+ 			music.style.WebkitAnimationPlayState="paused";
+        	music_a.src="img/songs_p.png";
+        	songs_bol = false;
+ 		}
+ 		else if(rnd==6){
+ 			$('.false_mengban').css('display','block');
+ 			false_sound.play();
+ 			music.style.WebkitAnimationPlayState="paused";
+        	music_a.src="img/songs_p.png";
+        	songs_bol = false;
+ 		}
+ 	}
+	// 后台返回数据的地址
+	// var url = "";
+
+	//点击抽奖按钮时返回的礼品数值
+	$('.draw_b').bind("touchstart",function(){
+		 choujiang();
+		 background_sound.pause();
+	})
+		
+			
+	// 	ajaxFn(url,function (data){
+	// 		//返回奖品对应的数字 
+	// 		// 0 代表vivoX5pro一台
+	// 		// 1 代表港囧电影票一套  
+	// 		// 2 代表vivo充电宝  
+	// 		// 3 代表vivo耳机 
+	// 		// 4 代表你获得签名剧照  
+	// 		// 5 代表vivo官方旗舰店100元代金券
+	// 	});
+	// })
+
+ // // 提交中奖信息
+	// $('.sub span').bind('touchstart',function(){
+
+	// })
+
+
+
+
+	</script>
+	<script>
+	//游戏说明文章关闭和显示
+	$('.game_txt_b').bind('touchstart',function(){
+		$('.game_info_mengban').css('display','block');
+		$('#game_info_wrap').css('display','block');
+	})
+	$('.game_two_b span').bind('touchstart',function(){
+		$('.game_info_mengban').css('display','block');
+		$('#game_info_wrap').css('display','block');
+	})
+	$('#game_info_close').bind("touchstart",function(){
+		$('#game_info_wrap').css('display','none');
+		$('.game_info_mengban').css('display','none');
+	})
+
+
+
+//自定义滚动条
+var game_info = document.getElementById('game_info');
+ var content = document.getElementById('content');
+ var scroll = document.getElementById('scroll');
+ var btn = document.getElementById('scrollbtn');
+ var scrollH = game_info.clientHeight/content.offsetHeight*game_info.clientHeight;
+ if (scrollH < 50) {
+  scrollH = 50;
+ };
+ btn.style.height = scrollH + "px";
+
+ function move () {        //滚动条对应文本运动封函数
+  var scale = btn.offsetTop/(scroll.offsetHeight - btn.offsetHeight);
+  content.style.top = -scale * (content.offsetHeight-game_info.clientHeight) + "px";
+ }
+ btn.ontouchstart = function (e) {       //点击滚动条事件
+  var touch = e.touches[0];
+  var dixY = touch.pageY - btn.offsetTop;
+  document.ontouchmove = function (e) {
+   var touch = e.touches[0];
+   var y = touch.pageY - dixY;
+   go (y);
+   return false;
+  }
+  e.cancelBubble = true;
+  document.ontouchend = function () {
+   document.onmousemove = "";
+  }
+  return false;
+ }
+  content.ontouchstart = function (e) {  //点击文本事件
+  var touch = e.touches[0];
+  var dixY = touch.pageY;
+  var bTop = btn.offsetTop;
+  document.ontouchmove = function (e) {
+   var touch = e.touches[0];
+    var y = dixY - touch.pageY;
+    btn.style.top = bTop + y + "px";
+    if (btn.offsetTop< 0) {
+    btn.style.top = 0;
+    };
+    if (btn.offsetTop > scroll.offsetHeight - btn.offsetHeight) {
+      btn.style.top = scroll.offsetHeight - btn.offsetHeight + "px";
+    };
+    move();
+   return false;
+  }
+  touch.cancelBubble = true;
+  document.ontouchend = function () {
+   document.ontouchmove = "";
+  }
+  return false;
+ }
+ function go (y) {     //判断超出范围封函数
+   if (y < 0) {
+    y = 0
+   };
+   if (y > game_info.clientHeight - btn.offsetHeight - 6) {
+    y = game_info.clientHeight - btn.offsetHeight - 6;
+   };
+  btn.style.top = y + "px";
+  move();
+ }
+ function wheelFn(obj,succFn){      //鼠标滚轮事件
+ 
+ if (window.navigator.userAgent.indexOf("Firefox")>0) {
+  obj.addEventListener("DOMMouseScroll",Fn,false);
+ }else{
+  obj.onmousewheel = Fn;
+ }
+
+ function Fn(e) {
+  var e = e || window.event;
+  var down;
+  if (e.detail) {
+   down = e.detail>0;
+  }else{
+   down = e.wheelDelta<0;
+  }
+ 
+  succFn.call(obj,down);
+
+  if (e.preventDefault) {
+   e.preventDefault();
+  };
+  return false;
+ }
+}
+ wheelFn(game_info,function (down) {
+  // alert(this);
+  if (down) {
+   var y = btn.offsetTop + 10;
+   go (y);
+  }else{
+   var y = btn.offsetTop - 10;
+   go (y);
+  }
+ })
+	</script>
+</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+		<title>黄金矿工</title>
+		<style type="text/css">
+			#worker {
+				position: absolute;
+				width: 23px;
+				height: 19px;
+				left: 282px;
+				top: 34px;
+				z-Index: 1;
+			}
+			
+			#div {
+				position: absolute;
+				width: 23px;
+				height: 19px;
+				filter: progid: DXImageTransform.Microsoft.Matrix(M11=1, M12=0, M21=0, M22=1, SizingMethod="auto expand");
+				line-height: 50px;
+				overflow: hidden;
+				z-Index: 2;
+			}
+			
+			#line {
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-Index: 3;
+			}
+		</style>
+	</head>
+
+	<body onload="begin();window.resizeTo(635,630);" style="overflow:hidden;">
+		<center>
+			<table borderColor=#0099cc cellSpacing=0 borderColorDark=#0099cc cellPadding=15 width=450 borderColorLight=#0099cc border=1>
+				<tbody>
+					<tr>
+						<td id="gamebg">
+							<div id="playtop" align="center" style="display:none;"><img src="images/top.jpg" width="558"></div>
+							<div id="playbg" align="center" style="display:none;"><img style="WIDTH: 558px; HEIGHT: 339px" height="339" src="images/bg.jpg" width="558"></div>
+							<div id="endbg" align="center"><img src="images/start.jpg"></div>
+							<div id="goal" style="position:absolute;left:200px;top:180px;font-size:30pt;color:#6FDB4A;cursor:hand;" onclick="gogo();">$650</div>
+							<div id="ends" style="position:absolute;left:200px;top:160px;font-size:18pt;color:#EED62B;cursor:hand;width:270px;" onclick="begin();"></div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+		<div id="plat" style="display:none;">
+			<div id="worker"><img src="images/worker2.gif" id="wimg"></div>
+			<div id="div"><img src="images/hook.gif"></div>
+			<v:line id="line"></v:line>
+			<div id="show"></div>
+			<div style="position:absolute;left:40px;top:40px;font-size:15pt;"><b>金钱：<span id="nowcount" style="color:#6FDB4A;"></span></b></div>
+			<div style="position:absolute;left:40px;top:76px;font-size:15pt;"><b>目标钱数：<span id="goalcount" style="color:#EED62B;"></span></b></div>
+			<div id="times" style="position:absolute;left:510px;top:36px;font-size:33pt;">40</div>
+			<div style="position:absolute;left:520px;top:80px;font-size:10pt;">第&nbsp;<b><span id="passno" style="color:#ff0000;"></span></b>&nbsp;关</div>
+			<div id="shots" style="position:absolute;left:380px;top:76px;"></div>
+		</div>
+		<div id="debug" style="position:absolute;left:30px;top:536px;"></div>
+	</body>
+	<!--<script src="js/loadxml.js"></script>-->
+	<!--<script src="js/play.js"></script>-->
+	<script src="js/JQuery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		function xmlData() {
+			this.xmlFile = '';
+			this.html = '';
+			this.itemlist = new Array();
+			this.runlist = new Array();
+			this.runval = null;
+			this.mtime = 0;
+			this.goal = 0;
+
+			this.createXMLDOM = function() { //生成XMLDOM对象
+				var xmldom;
+				if(window.ActiveXObject) {
+					var xmldom = new ActiveXObject("Microsoft.XMLDOM");
+				} else {
+					if(document.implementation && document.implementation.createDocument) {
+						var xmldom = document.implementation.createDocument("", "doc", null);
+					}
+				}
+				xmldom.async = false;
+				return xmldom;
+			}
+
+			this.readXMLDOM = function() {
+				this.html = '';
+				this.itemlist = new Array();
+				this.runlist = new Array();
+				$('show').innerHTML = '';
+				if(this.runval != null) window.clearTimeout(this.runval);
+				var xmldom = this.createXMLDOM();
+				if(xmldom.load(this.xmlFile)) {
+					this.readNodes(xmldom);
+					$('show').innerHTML = this.html;
+					$('goal').innerText = "$" + this.goal;
+					itemlist = this.itemlist;
+					if(this.runlist.length > 0) this.runval = window.setInterval("xd.itemrun();", 10);
+				} else {
+					alert("游戏结束！");
+					pass = 1;
+					baglist = 0;
+					getmoney = 0;
+					begin();
+				}
+				return;
+			}
+
+			this.readNodes = function(obj) { //生成指定编号节点的树
+				var nodes = obj.getElementsByTagName('node');
+				if(nodes != null && nodes.length > 0) {
+					var nid, ndir, nprop, npos, nadd, nitem, nmoney, nburst;
+					for(var i = 0; i < nodes.length; i++) {
+						//取得节点编号并检测
+						nid = nodes[i].getAttribute('id');
+						ndir = this.getFirstChildData(nodes[i], 'dir');
+						nprop = this.getFirstChildData(nodes[i], 'prop');
+						npos = this.getFirstChildData(nodes[i], 'pos');
+						if(ndir != '' && nprop != '' && npos != '') {
+							var pos = npos.split(";");
+							var pos1 = pos[0].split(",");
+							var prop = nprop.split(",");;
+							var temp = new Array();
+							temp["nid"] = nid;
+							temp["pos1"] = pos[0].split(",");
+							temp["pos"] = pos1;
+							temp["prop"] = prop;
+							temp["add"] = this.getFirstChildData(nodes[i], 'add');
+							temp["item"] = this.getFirstChildData(nodes[i], 'item');
+							temp["money"] = this.getFirstChildData(nodes[i], 'money');
+							temp["burst"] = this.getFirstChildData(nodes[i], 'burst');
+							if(pos.length > 1) {
+								var pos2 = pos[1].split(",");
+								temp["pos"].push(pos2[0]);
+								temp["pos"].push(pos2[1]);
+								this.runlist.push(temp["nid"]);
+							}
+							this.itemlist.push(temp);
+							this.html += '<div id="' + nid + '" style="position:absolute;left:' + pos1[0] + 'px;top:' + pos1[1] + 'px;"><img src="images/' + ndir + '"></div>';
+						}
+					}
+				}
+				var rules = obj.getElementsByTagName('rule');
+				if(rules != null && rules.length > 0) {
+					this.mtime = this.getFirstChildData(rules[0], 'mtime');
+					this.goal = this.getFirstChildData(rules[0], 'goal');
+				}
+				return;
+			}
+
+			this.getFirstChildData = function(obj, name) { //取得指定名称节点的第一个子节点的数据
+				var result = '';
+				if(typeof(obj) == 'object' && name != null && name != '') {
+					var node = obj.getElementsByTagName(name);
+					if(node != null && node.length > 0) {
+						result = node[0].firstChild.data;
+					}
+				}
+				return result;
+			}
+
+			this.itemrun = function() {
+				//$("debug").innerText = '';
+				for(var i = 0; i < this.itemlist.length; i++) {
+					if(this.runlist.indexOf(this.itemlist[i]["nid"]) != -1) {
+						var info = this.itemlist[i];
+						//$("debug").innerHTML += info["nid"]+",";
+						if(parseInt(info["pos1"][0]) > parseInt(info["pos"][2])) {
+							var temp = parseInt(info["pos1"][0]);
+							info["pos1"][0] = temp - 1;
+							$(info["nid"]).style.left = temp;
+						} else {
+							var temp = info["pos"][0];
+							info["pos1"][0] = temp.concat();
+							$(info["nid"]).style.left = temp.concat();
+						}
+					}
+				}
+				//$("debug").innerHTML += "<br>";
+			}
+		}
+
+		function go() {
+			div = $("div");
+			line = $("line");
+
+			div.width = parseInt(div.currentStyle.width);
+			div.height = parseInt(div.currentStyle.height);
+			div.oldleft = 0;
+			div.oldtop = 0;
+			div.downleft1 = 0;
+			div.downtop1 = 0;
+			div.downleft2 = 0;
+			div.downtop2 = 0;
+
+			line.strokecolor = "#000000";
+			line.strokeweight = "1px";
+			line.to = "295,75";
+
+			line.pleft = 295;
+			line.ptop = 75;
+			line.plength = 0;
+
+			line.from = line.pleft + "," + line.ptop;
+
+			div.setpos = div_setpos;
+			div.setcirc = div_setcirc;
+			div.setcirc(-19, 1, "l");
+			document.onkeydown = keyDown;
+			if(ns4) document.captureEvents(Event.KEYDOWN);
+			flag = false;
+			b_flag = false;
+			g_flag = false;
+		}
+
+		function div_setcirc(xleft, xtop, act) {
+			div.setpos(xleft, xtop);
+			var left = act == "r" ? (xleft - 1) : (xleft + 1);
+			var top = left < 0 ? (act == "r" ? (xtop - 1) : (xtop + 1)) : (act == "r" ? (xtop + 1) : (xtop - 1));
+			if(left == -19) {
+				left = -18;
+				top = 2;
+				act = "l";
+			}
+			if(left == 19) {
+				left = 18;
+				top = 2;
+				act = "r";
+			}
+			t_int = setTimeout("div.setcirc(" + left + "," + top + ",'" + act + "')", 100);
+		}
+
+		function div_setpos(xleft, xtop) {
+			div.xleft = xleft;
+			div.xtop = xtop;
+
+			var qa = 0;
+			if(xtop == 0) {
+				qa = Math.PI / 2;
+			} else {
+				qa = Math.atan(xleft / xtop);
+			}
+			var lx = Math.abs(parseInt((div.width / 2) * Math.cos(qa)));
+			var ly = Math.abs(parseInt((div.width / 2) * Math.sin(qa)));
+			var dx = Math.abs(parseInt(div.height * Math.cos(qa)));
+			var dy = Math.abs(parseInt(div.height * Math.sin(qa)));
+
+			if(xleft >= 0) {
+				div.style.left = line.pleft + xleft - lx;
+				div.style.top = line.ptop + xtop - ly;
+				div.downleft1 = line.pleft + xleft - lx + dx;
+				div.downtop1 = line.ptop + xtop - ly + dy;
+				div.downleft2 = line.pleft + xleft + lx;
+				div.downtop2 = line.ptop + xtop + ly;
+				line.to = (line.pleft + xleft) + "," + (line.ptop + xtop);
+			} else {
+				var x1 = Math.abs(div.width * Math.tan(qa));
+				var x2 = div.height - x1;
+				var w2 = x2 * Math.sin(qa);
+				var w1 = x1 / Math.sin(qa);
+				var w = Math.abs(w1 + w2);
+
+				div.style.left = line.pleft + xleft - (parseInt(w) - lx);
+				div.style.top = line.ptop + xtop - ly;
+				div.downleft1 = line.pleft + xleft - (parseInt(w) - lx) + dx;
+				div.downtop1 = line.ptop + xtop - ly + dy;
+				div.downleft2 = line.pleft + xleft;
+				div.downtop2 = line.ptop + xtop + ly;
+
+				line.to = (line.pleft + xleft) + "," + (line.ptop + xtop);
+			}
+			with(div.filters.item(0)) {
+				M11 = Math.cos(qa);
+				M12 = Math.sin(qa);
+				M21 = -Math.sin(qa);
+				M22 = Math.cos(qa);
+			}
+		}
+
+		function div_setdrawgo() {
+			if(flag) {
+				var qa = Math.PI / 2;
+				if(div.xtop != 0) qa = Math.atan(div.oldleft / div.oldtop);
+				var xtop = div.xtop + 1;
+				var xleft = parseInt(xtop * Math.tan(qa));
+
+				div.setpos(xleft, xtop);
+				var dleft = parseInt(div.style.left);
+				var dtop = parseInt(div.style.top);
+				for(var k = 0; k < xd.itemlist.length; k++) {
+					if(isBetween(xd.itemlist[k]["pos1"][0], div.downleft1, xd.itemlist[k]["prop"][0]) && isBetween(xd.itemlist[k]["pos1"][1], div.downtop1, xd.itemlist[k]["prop"][1]) && isBetween(xd.itemlist[k]["pos1"][0], div.downleft2, xd.itemlist[k]["prop"][0]) && isBetween(xd.itemlist[k]["pos1"][1], div.downtop2, xd.itemlist[k]["prop"][1])) {
+						//$("debug").innerText = xd.itemlist[k]["pos1"][0]+","+dleft+","+xd.itemlist[k]["prop"][0]+"<br>";
+						//$("debug").innerText += xd.itemlist[k]["pos1"][1]+","+dtop+","+xd.itemlist[k]["prop"][1]+"<br>";
+						if(xd.itemlist[k]["burst"] == "true") {
+							window.clearInterval(xd.runval);
+							$(xd.itemlist[k]["nid"]).childNodes[0].src = "images/burst.gif";
+							g_flag = true;
+							window.setTimeout("div_burst(" + k + ");", 1000);
+						} else {
+							if(xd.runlist.indexOf(xd.itemlist[k]["nid"]) != -1) {
+								window.clearInterval(xd.runval);
+								xd.runlist = xd.runlist.RemoveAt(xd.runlist.indexOf(xd.itemlist[k]["nid"]));
+								xd.runval = window.setInterval("xd.itemrun();", 10);
+							}
+							div_getitem(k);
+							g_flag = true;
+						}
+						break;
+					}
+				}
+				window.status = div.style.left + "," + div.style.top;
+				if(xleft > -250 && xleft < 300 && xtop < 360 && !g_flag) setTimeout("div_setdrawgo()", 5);
+				else if(!g_flag) div_setdrawback();
+			}
+		}
+
+		function div_setdrawback() {
+			var xtop = div.xtop - 1;
+			var qa = Math.PI / 2;
+			if(div.xtop != 0) qa = Math.atan(div.oldleft / div.oldtop);
+			var xleft = parseInt(xtop * Math.tan(qa));
+			div.setpos(xleft, xtop);
+			//$("debug").innerText = xleft+"!="+div.oldleft +"&&"+ xtop+"!="+div.oldtop +"&&"+ flag;
+			if((div.oldleft == 0 || xleft != div.oldleft) && xtop != div.oldtop && flag) setTimeout("div_setdrawback()", 5);
+			else if(flag) {
+				$("wimg").src = "images/worker2.gif";
+				div.setcirc(div.oldleft, div.oldtop, "l");
+				g_flag = false;
+				flag = false;
+			}
+		}
+
+		function div_getitem(i) {
+			var xtop = div.xtop - 1;
+			var qa = Math.PI / 2;
+			if(div.xtop != 0) qa = Math.atan(div.oldleft / div.oldtop);
+			var xleft = parseInt(xtop * Math.tan(qa));
+			div.setpos(xleft, xtop);
+			$(xd.itemlist[i]["nid"]).style.left = parseInt(div.style.left) - 5;
+			$(xd.itemlist[i]["nid"]).style.top = parseInt(div.style.top) + 15;
+			if(b_flag) {
+				$("show").removeChild($(xd.itemlist[i]["nid"]));
+				xd.itemlist = xd.itemlist.RemoveAt(i);
+				g_flag = false;
+				b_flag = false;
+				div_setdrawback();
+			} else if((div.oldleft == 0 || xleft != div.oldleft) && xtop != div.oldtop && flag) {
+				setTimeout("div_getitem(" + i + ")", 5 + parseInt(xd.itemlist[i]["add"]));
+			} else {
+				if(xd.itemlist[i]["item"] != "") {
+					baglist += parseInt(xd.itemlist[i]["item"]);
+					for(var b = 0; b < xd.itemlist[i]["item"]; b++) $("shots").innerHTML += '<img src="images/shot.gif">';
+				}
+				if(xd.itemlist[i]["money"] != "") {
+					getmoney += parseInt(xd.itemlist[i]["money"]);
+					$("nowcount").innerText = "$" + getmoney;
+				}
+				$("wimg").src = "images/worker2.gif";
+				$("show").removeChild($(xd.itemlist[i]["nid"]));
+				xd.itemlist = xd.itemlist.RemoveAt(i);
+				div.setcirc(div.oldleft, div.oldtop, "l");
+				g_flag = false;
+				flag = false;
+			}
+		}
+
+		function div_burst(i) {
+			var left = parseInt(xd.itemlist[i]["pos1"][0]) + parseInt(xd.itemlist[i]["prop"][0]) / 2;
+			var top = parseInt(xd.itemlist[i]["pos1"][1]) + parseInt(xd.itemlist[i]["prop"][1]) / 2;
+			var nid = xd.itemlist[i]["nid"];
+			xd.itemlist = xd.itemlist.RemoveAt(i);
+			xd.runval = window.setInterval("xd.itemrun();", 10);
+			for(var b = 0; b < xd.itemlist.length; b++) {
+				if(isBetween(left - 100, xd.itemlist[b]["pos1"][0], 100) && isBetween(top - 100, xd.itemlist[b]["pos1"][1], 100)) {
+					if(xd.runlist.indexOf(xd.itemlist[b]["nid"]) != -1) {
+						xd.runlist = xd.runlist.RemoveAt(xd.runlist.indexOf(xd.itemlist[b]["nid"]));
+					}
+					$("show").removeChild($(xd.itemlist[b]["nid"]));
+					xd.itemlist = xd.itemlist.RemoveAt(b);
+				}
+			}
+			$("show").removeChild($(nid));
+			g_flag = false;
+			div_setdrawback();
+		}
+
+		function isBetween(Min, Check, Add) {
+			var numMin = parseInt(Min);
+			var numCheck = parseInt(Check);
+			var numMax = parseInt(Min) + parseInt(Add);
+			return(numMin < numCheck && numCheck < numMax);
+		}
+
+		function keyDown(e) {
+			if(ie4 && event.keyCode == 40 && !flag) {
+				window.clearTimeout(t_int);
+				div.oldleft = div.xleft;
+				div.oldtop = div.xtop;
+				flag = true;
+				div_setdrawgo();
+				$("wimg").src = "images/working.gif";
+			}
+			if(ie4 && event.keyCode == 38 && g_flag) { //�Ϸ������ը��
+				if(baglist > 0) {
+					//alert("197");
+					baglist--;
+					b_flag = true;
+					var oChild = $("shots").children(0);
+					$("shots").removeChild(oChild);
+				}
+			}
+		}
+
+		function TimeEvent() {
+			xd.mtime--;
+			if(Math.floor(xd.mtime / 60 / 10) == 0) {
+				$("times").innerText = '0';
+			} else {
+				$("times").innerText = '';
+			}
+
+			$("times").innerText += Math.floor(xd.mtime / 60 % 10);
+			if(Math.floor(xd.mtime % 60 / 10) == 0) {
+				$("times").innerText = '0';
+			} else {
+				$("times").innerText = '';
+			}
+
+			$("times").innerText += Math.floor(xd.mtime % 60);
+			if(xd.mtime <= 0) {
+				flag = false;
+				end();
+			} else {
+				setTimeout("TimeEvent()", 1000);
+			}
+		}
+		var $ = function(id) {
+			//获取对象
+			return document.getElementById(id);
+		};
+		Array.prototype.RemoveAt = function(num) {
+			if(num < 0) return this;
+			return this.slice(0, num).concat(this.slice(num + 1, this.length));
+		}
+		Array.prototype.indexOf = function(object) {
+			for(var i = 0, length = this.length; i < length; i++)
+				if(this[i] == object) return i;
+			return -1;
+		}
+		var pass = 1; //记录关数
+		var div = null;
+		var line = null;
+		var baglist = 0; //用户道具
+		var getmoney = 0; //挖出金钱总数
+		var t_int = null;
+		var g_flag = false;
+		var ns4 = (document.layers) ? true : false;
+		var ie4 = (document.all) ? true : false;
+		var flag = false;
+		var b_flag = false;
+		var g_flag = false;
+		var xd = new xmlData(); //生成对象
+		function gogo() {
+			$("playtop").style.display = '';
+			$("playbg").style.display = '';
+			$("endbg").style.display = 'none';
+			$("goal").style.display = 'none';
+			$("goal").onclick = function() {
+				return false;
+			}
+			$("plat").style.display = '';
+			$("passno").innerText = pass;
+			$("times").innerText = xd.mtime;
+			$("goalcount").innerText = "$" + xd.goal;
+			$("nowcount").innerText = "$" + getmoney;
+			go();
+			TimeEvent();
+		}
+
+		function begin() {
+			window.clearTimeout(t_int);
+			$("endbg").innerHTML = '<img src="images/start.jpg">';
+			$("goal").style.display = '';
+			$("goal").onclick = function() {
+				gogo();
+				return false;
+			}
+			$("ends").style.display = 'none';
+			xd.xmlFile = 'data/' + pass + '.xml';
+			xd.readXMLDOM();
+		}
+
+		function end() {
+			$("playtop").style.display = 'none';
+			$("playbg").style.display = 'none';
+			$("endbg").style.display = '';
+			$("plat").style.display = 'none';
+			$("endbg").innerHTML = '<img src="images/end.jpg">';
+			document.onkeydown = function() {
+				return false;
+			}
+			var msg = "恭喜你过关！";
+			if(getmoney < xd.goal) {
+				msg = "你没有达到目标分！重来一遍！";
+				pass = 1;
+				baglist = 0;
+				getmoney = 0;
+			} else pass = pass + 1;
+			$("ends").style.display = '';
+			$("ends").innerText = msg;
+			window.clearTimeout(t_int);
+		}
+
+		function resizeMe() {
+			window.resizeTo(635, 630);
+		}
+	</script>
+
+</html>

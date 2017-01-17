@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选字游戏</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+
+		}
+		#fontBox {
+			width: 420px;
+			height: 540px;
+			background-color: #ccc;
+			margin: 10px auto;
+			border-radius: 10px;
+			position: relative;
+		}
+		#time {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			font-size: 1.5em;
+		}
+		#score {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			font-size: 1.5em;
+		}
+		#title {
+			position: absolute;
+			font-size: 10em;
+			top: 90px;
+			left: 126px;
+		}
+		#tip {
+			width: 340px;
+			position: absolute;
+			top: 270px;
+			left: 50px;
+			font-size: 2em;
+		}
+		#text {
+			list-style: none;
+			position: absolute;
+			bottom: 20px;
+			left: 10px;
+			font-size: 5em;
+			
+		}
+		#text>li {
+			float: left;
+		}
+		#restart {
+			width: 100px;
+			height: 20px;
+			background-color: red;
+			margin-left: 800px;
+		}
+	</style>
+</head>
+<body>
+	<div id="fontBox">
+		<div id="time">剩余时间: 10 s</div>
+		<div id="score">分数: 0</div>
+		<div id="title">红</div>
+		<div id="tip">根据上面的字的颜色选择正确的字，选择正确自动开始</div>
+		<ul id="text">
+			<li>红</li>
+			<li>绿</li>
+			<li>蓝</li>
+			<li>黄</li>
+			<li>黑</li>
+		</ul>
+	</div>
+	<div id="restart" onclick="restart()"></div>
+</body>
+<script type="text/javascript">
+//获得页面可用节点
+	var time = document.querySelector("#time");
+	var score = document.querySelector("#score");
+	var title = document.querySelector("#title");
+	//console.log(title);
+	var tip = document.querySelector("#tip");
+	var selects = document.querySelectorAll("#text>li");
+
+//设置相关全局变量
+	var timeNum = 10;
+	var scoreNum = 0;
+	var fontArr = ["红","绿","蓝","黄","黑"];
+	//console.log(fontArr);
+	var colorArr = ["red","green","blue","yellow","black"];
+	//console.log(colorArr);
+	var isBegin = false;
+	var colorIndex = undefined;
+//游戏结束
+	function gameOver() {
+			if(scoreNum < 3){
+				alert("你真棒，呵呵哒");
+			}else if (scoreNum < 5) {
+				alert("哎呦，不错哦");
+			}else if (scoreNum < 10) {
+				alert("unbelievable");
+			}else{
+				alert("unstoppable");
+			}
+		}	
+
+//需要一个能产生[0，4]随机数的函数
+	function randomNum(max){
+		//max= 5 时产生的是[0，4]之间的随机数
+		return parseInt(Math.random()*max);
+
+	}
+
+//设置中间字的字与颜色
+	function setTitle(){
+		//先获得两个随机数
+		var tempFont = randomNum(5);
+		var tempColor = randomNum(5);
+		//设置title节点的字与颜色
+		//console.log(tempFont);
+		title.innerText = fontArr[tempFont];
+		//console.log(title.innerHTML);
+		title.style.color = colorArr[tempColor];
+		//console.log(title.style.color);
+
+		//保存颜色所在索引
+		colorIndex = tempColor;
+
+
+	}
+
+// 设置下面字体的字与颜色
+	function setSelects() {
+		//获得两个随机数组
+		var tempFArr = randomArr ();
+		var tempCArr = randomArr ();
+		//循环赋值五个字与颜色
+		for(var i = 0; i < selects.length; i++){
+			//赋值 字
+			selects[i].innerHTML = fontArr[tempFArr[i]];
+			//赋值 颜色
+			selects[i].style.color = colorArr[tempCArr[i]];
+		}
+	}
+
+	//需要一个装有不重复的随机数的数组
+	function randomArr (){
+		var arr = [];
+		while(arr.length < 5){
+			//1、拿到随机数
+			var tempNum = randomNum(5);
+			//设置一个boolean类型数，记录是否重复了
+			var isExsit = false;
+			//2、判断随机数组中是否包含
+			for(var i = 0; i < arr.length; i++){
+				if(tempNum == arr[i]){
+					isExsit = true;
+					//如果匹配到了第一个，就没必要接着比较了
+					break;
+				}
+			}
+			//3、通过存在与否的标记，决定是否添加随机数
+			if(!isExsit){
+				arr.push(tempNum);
+			}
+		}
+		return arr;
+	}
+	
+	var timer = setInterval(function(){
+		if(isBegin){
+			//console.log("dingshiqi");//页面一加载就存在
+			timeNum--;
+			time.innerHTML = "剩余时间: " + timeNum + " s";
+			if(timeNum == 0){
+				//清自身定时器
+				clearInterval(timer);
+				timer = null;
+				//延迟调用游戏结束函数(结束函数中有alert，会使页面卡住)
+				var timeout = setTimeout(function(){
+					//清除一次性定时器
+					clearInterval(timeout);
+					timeout = null ;
+					isBegin = false;
+					gameOver();
+				},10)
+				// gameOver();
+			}
+		}
+	},1000);
+ 
+	for(var i = 0; i < selects.length; i++){
+		selects[i].onclick = function () {
+			//alert(this.innerHTML);//打印下面字体的字
+			//1、根据title颜色的索引值在fontArr数组中找出对应的字，
+			// 第1条的依据是：colorArr 和 FontArr 是一一对应的两个数组
+			//和点击的this.innerHTML的字对比
+			var titleFont = fontArr[colorIndex];
+			if(titleFont == this.innerHTML && timeNum != 0){
+				//alert("匹配上了");
+				isBegin = true;
+				scoreNum++;
+				score.innerHTML = "分数: " + scoreNum ;
+				initGame();
+			}
+		}
+	}
+
+
+	function restart(){
+		alert("chongzhi ");
+	}
+
+
+
+
+
+	function initGame(){
+		setTitle();
+		setSelects();
+	}
+	
+
+
+	initGame();
+	
+</script>
+</html>

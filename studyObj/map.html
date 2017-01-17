@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>百度地图</title>
+		<style type="text/css">
+			#map {
+				width:700px;
+				height:550px;
+				border:#ccc solid 1px;
+				font-size:12px
+			}
+			.wrap {
+				margin-top: 20px;
+			}
+		</style>
+		<!--引用百度地图API-->
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=qutY3I9E9rUH0kQ5zfB2QC0mEbGPoQN2"></script>
+	</head>
+	<body>
+		<!--百度地图容器-->
+		<div id="map"></div>
+		<div class="wrap">
+			<input type="text" id="coordinatex" />
+			<input type="text" id="coordinatey" />
+			<input type="button" id="btn" value="查询" />
+		</div>
+	</body>
+	<script type="text/javascript">
+		var coordinatex = document.getElementById("coordinatex");
+		var coordinatey = document.getElementById("coordinatey");
+		var btn = document.getElementById("btn");
+		//console.log(btn);
+		//创建和初始化地图函数：
+		function initMap(x, y) {
+			createMap(x, y); //创建地图
+			setMapEvent(); //设置地图事件
+			addMapControl(); //向地图添加控件
+			addMapOverlay(); //向地图添加覆盖物
+		}
+
+		function createMap(x, y) {
+			map = new BMap.Map("map");
+			//x= 121.297245  y = 31.135266
+			var x = x;
+			var y = y
+			//设置坐标点  19 表示地图的缩放大小
+			map.centerAndZoom(new BMap.Point(x, y), 19);
+		}
+
+		function setMapEvent() {
+			map.enableScrollWheelZoom();
+			map.enableKeyboard();
+			map.enableDragging();
+			map.enableDoubleClickZoom()
+		}
+
+		function addClickHandler(target, window) {
+			target.addEventListener("click", function() {
+				target.openInfoWindow(window);
+			});
+		}
+
+		function addMapOverlay() {}
+		//向地图添加控件
+		function addMapControl() {
+			var scaleControl = new BMap.ScaleControl({
+				anchor: BMAP_ANCHOR_BOTTOM_LEFT
+			});
+			scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+			map.addControl(scaleControl);
+			var navControl = new BMap.NavigationControl({
+				anchor: BMAP_ANCHOR_TOP_LEFT,
+				type: BMAP_NAVIGATION_CONTROL_LARGE
+			});
+			map.addControl(navControl);
+			var overviewControl = new BMap.OverviewMapControl({
+				anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+				isOpen: true
+			});
+			map.addControl(overviewControl);
+		}
+		var map;
+		
+		//点击查询事件 
+		btn.onclick = function() {
+			//获取两个input框的值
+			var x = coordinatex.value;
+			var y = coordinatey.value;
+			initMap(x, y);
+		}
+	</script>
+
+</html>

@@ -1,0 +1,115 @@
+.body_bottom_box{
+			height: 422px;
+			margin-top: 105px;
+			min-width: 1210px;
+		}
+		.bottom_inf{
+			height: 250px;
+			border-top:1px solid #dfdfdf;
+			border-bottom:1px solid #dfdfdf;
+			background: #fafafa;
+			width: 100%
+		}
+		.bottom_inf_content{
+			width: 1210px;
+			height: 150px;
+			margin: 0 auto;
+			padding: 50px 0;
+			/*background-color: #FFFF76;*/
+		}
+		.bottom_inf_content div{
+			float: left;
+			height: 150px;
+			border-right: 1px solid #dfdfdf;
+			/*box-sizing: border-box:规定两个并排的带边框的框：*/
+			box-sizing: border-box;
+
+		}
+		.bottom_inf_content h3{
+			font-size: 18px;
+			color: #444;
+			margin-bottom: 20px;
+			font-weight: 500px;
+		}
+		.bottom_inf_content ul{
+			font-size: 14px;
+		}
+		.bottom_inf_content ul li{
+			margin-bottom: 9px;
+		}
+		.bottom_inf_content ul li a{
+			color: #6d6d6d;
+		}
+		.bottom_inf_content_1{
+			width: 15%;
+			text-align: left;
+		}
+		.bottom_inf_content_2{
+			width: 20%;
+			text-align: center;
+		}
+		.bottom_inf_content_3{
+			width: 25%;
+			text-align: center;
+		}
+		.mobile_btn{
+			display: block;
+			width: 160px;
+			height: 35px;
+			line-height: 35px;
+			margin: 0 auto;
+			margin-top: 20px;
+			background: #ff4883;
+			color: #fff;
+			font-size: 14px;
+		}
+		.copyright_inf{
+			margin-top: 35px;
+			color: #b4b4b4;
+		}
+		.site_inf{
+			margin-top: 27px;
+			color: #666;
+			text-align: center;
+		}
+		.icons{
+			margin: 18px auto 0;
+			font-size: 0;
+			text-align: center;
+		}
+		.icons span{
+			display: inline-block;
+			height: 40px;
+			margin-right: 8px;
+		}
+		.icons_qianbao{
+			width: 262px;
+			background-repeat: no-repeat;
+			background-image: url(cut/1.png);
+		}
+		.icons_zhifubao{
+			width: 123px;
+			background-repeat: no-repeat;
+			background-image: url(cut/2.png);
+		}
+		.icons_lexin{
+			width: 110px;
+			background-repeat: no-repeat;
+			background-image: url(cut/3.png);
+		}
+		.icons_web{
+			width: 103px;
+			margin-right: 0;
+			background-repeat: no-repeat;
+			background-image: url(cut/4.png);
+		}
+		.last{
+			width: 300px;
+			margin: 0 auto;
+			padding: 20px 0;
+		}
+		.last a{
+			display: inline-block;
+			height: 20px;
+			line-height: 20px;
+		}

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+		<title>Rendering</title>
+		<script src="js/JQuery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				width: 100%;
+				font-family: Arial, sans-serif, Microsoft YaHei;
+			}
+			
+			#wrap {
+				width: 100%;
+			}
+			
+			li {
+				list-style: none;
+			}
+			
+			a {
+				text-decoration: none;
+				outline: none;
+			}
+			
+			p,
+			span {
+				font-family: arial;
+			}
+			/*中部*/
+			
+			html,
+			body {
+				position: relative;
+				height: 100%;
+			}
+			
+			.content {
+				width: 100%;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.swiper-container {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.swiper-slide {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-box-pack: center;
+				-ms-flex-pack: center;
+				-webkit-justify-content: center;
+				justify-content: center;
+				-webkit-box-align: center;
+				-ms-flex-align: center;
+				-webkit-align-items: center;
+				align-items: center;
+			}
+			
+			.swiper-slide img {
+				width: 100%;
+			}
+			/*瀑布流*/
+			
+			.waterfall {
+				width: 100%;
+				padding: 1%;
+				/*height: 100px;
+				background-color: red;*/
+			}
+			
+			.waterfall ul {
+				margin-right: 0.5%;
+				width: 24%;
+				float: left;
+			}
+			
+			.waterfall ul li {
+				width: 100%;
+				margin-bottom: 2%;
+			}
+			
+			.waterfall ul li img {
+				width: 100%;
+				height: auto;
+			}
+			
+			.imga {
+				display: block;
+				cursor: pointer;
+				/*width: 100%;*/
+				/*height: 100%;*/
+				position: relative;
+			}
+			
+			.imga img {
+				display: block;
+			}
+			
+			.imga:hover .fangda {
+				display: block;
+			}
+			
+			.fangda {
+				position: absolute;
+				left: 0%;
+				right: 0%;
+				top: 0%;
+				bottom: 0%;
+				display: none;
+				opacity: 0.5;
+				/*color: #cfdb00;*/
+				height: 100%;
+				width: 100%;
+				background-color: black;
+			}
+			
+			#fangDa {
+				width: 9%;
+				position: absolute;
+				top: 45.5%;
+				left: 45.5%;
+			}
+			
+			.FangDa {
+				display: none;
+				position: fixed;
+				z-index: 1000;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.55);
+				cursor: pointer;
+			}
+			
+			.frame {
+				position: absolute;
+				/*top: 50%;*/
+				background: white;
+				/*opacity: 0.5;*/
+				padding: 10px;
+			}
+			/*#FangDa_img {
+				width: 100%;
+				height: 100%;
+			}*/
+			/*响应式布局*/
+			
+			@media only screen and (min-width: 960px) {
+				.waterfall ul {
+					width: 24%;
+				}
+				.waterfall>ul:first-child {
+					display: block;
+				}
+				.waterfall>ul:last-child {
+					display: block;
+				}
+			}
+			
+			@media only screen and (min-width: 640px) and (max-width: 960px) {
+				.waterfall ul {
+					width: 32.33%;
+				}
+				.waterfall>ul:first-child {
+					display: none;
+				}
+				.waterfall>ul:last-child {
+					display: block;
+				}
+			}
+			
+			@media only screen and (max-width: 640px) {
+				.waterfall ul {
+					width: 49%;
+				}
+				.waterfall>ul:first-child {
+					display: block;
+				}
+				.waterfall>ul:last-child {
+					display: block;
+				}
+			}
+		</style>
+
+		<!--头部-->
+		<link rel="stylesheet" type="text/css" href="css/head.css" />
+		<!--中部-->
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+		<!--<link rel="stylesheet" type="text/css" href="css/homeContent.css" />-->
+		<!--尾部-->
+		<link rel="stylesheet" type="text/css" href="css/footer.css" />
+	</head>
+
+	<body>
+		<div id="wrap">
+			<!--头部-->
+			<div id="head">
+				<div class="head_wrap">
+					<div class="j_nav_wrap">
+						<!--导航栏-->
+						<ul class="j_nav">
+							<li class="j_nativ_logo">
+								<img src="img/j_nativ_logo.png" alt="" />
+							</li>
+							<input type="button" name="buttonnav" id="buttonnav" value="" />
+							<ul class="j_nativ_list other_list">
+								<li class="j_nativ_list1">
+									<a href="Home.html">Home</a>
+								</li>
+								<li class="j_nativ_list1">
+									<a href="About.html">About</a>
+								</li>
+								<li class="j_nativ_list1">
+									<a href="Rendering.html" style="border: 1px solid rgb(123, 123, 123); color: white;">Rendering</a>
+								</li>
+								<li class="j_nativ_list1">
+									<a href="Animation.html">3D Animation</a>
+								</li>
+								<li class="j_nativ_list1">
+									<a href="Bim.html">Bim</a>
+								</li>
+								<li class="j_nativ_list1">
+									<a href="Contact.html">Contact</a>
+								</li>
+							</ul>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!--中部-->
+			<div class="content">
+				<div class="swiper-container">
+					<!--大图滚动-->
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"><img src="img/Banner (1).jpg" alt="" /></div>
+						<div class="swiper-slide"><img src="img/Banner (2).jpg" alt="" /></div>
+						<div class="swiper-slide"><img src="img/Banner (3).jpg" alt="" /></div>
+					</div>
+					<!-- Add Pagination -->
+					<div class="swiper-pagination"></div>
+					<!-- Add Arrows -->
+					<!--<div class="swiper-button-next"></div>-->
+					<!--<div class="swiper-button-prev"></div>-->
+				</div>
+
+				<!--瀑布流-->
+
+				<div class="waterfall">
+					<ul>
+						<!--<li>
+							<a href="">
+								<img src="" alt="" />
+								<span class="fangda">
+									<img src="img/fangda.png"/>
+								</span>
+							</a>
+						</li>-->
+					</ul>
+					<ul></ul>
+					<ul></ul>
+					<ul></ul>
+				</div>
+
+			</div>
+		</div>
+		<div id="footer">
+			<div class="footer_wrap1">
+				<div class="j_share">
+					<a href=""><img src="img/mail_h.jpg" id="mail" /></a>
+					<a href=""><img src="img/mail.jpg" id="mail_h" /></a>
+				</div>
+				<div class="share_other">
+					<div class="share_wrap">
+						<a href="">
+							<img src="img/facebook_h.jpg" />
+							<img id="facebook_h" src="img/facebook.jpg" />
+						</a>
+						<a href="">
+							<img src="img/youtube_h.jpg" />
+							<img id="youtube_h" src="img/youtube.jpg" />
+						</a>
+						<a href="">
+							<img src="img/linkedln_h.jpg" />
+							<img id="linkedln_h" src="img/linkedln.jpg" />
+						</a>
+						<a href="">
+							<img src="img/twitter_h.jpg" />
+							<img id="twitter_h" src="img/twitter.jpg" />
+						</a>
+					</div>
+				</div>
+
+				<div class="j_footer">
+					<span class="j_copyright">Copyright © 1998-2015 shining Group</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="FangDa">
+			<span class="frame">
+				<img id="FangDa_img" src="img/RBI/P_08.jpg" alt="">
+			</span>
+		</div>
+	</body>
+	<!--引入swiper.js-->
+	<!--大图-->
+	<script src="js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var swiper = new Swiper('.swiper-container', {
+			pagination: '.swiper-pagination',
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev',
+			paginationClickable: true,
+			spaceBetween: 30,
+			centeredSlides: true,
+			autoplay: 2500,
+			loop: true
+		});
+	</script>
+	<script type="text/javascript">
+		var waterfall = document.getElementsByClassName("waterfall")[0];
+		//瀑布流
+		//瀑布流
+		var uls = document.querySelectorAll(".waterfall ul");
+		var num = 0;
+		var FangDa = document.querySelector(".FangDa");
+		var FangDa_img = document.getElementById("FangDa_img");
+		var Frame = document.getElementsByClassName("frame")[0]
+		var newUls = new Array;
+		//var randomHeight = 0;
+		//随机数
+		function random(min, max) {
+			return parseInt(Math.random() * (max - min + 1)) + min
+		}
+		//随机数组 随机1~39之间的随机数  与图片名字里面的数字相对
+		function randomArr() {
+			var arr = [];
+			while(arr.length < 79) {
+				var tempNum = random(1, 79);
+				var isExsit = false;
+				for(var i = 0; i < arr.length; i++) {
+					if(tempNum == arr[i]) {
+						isExsit = true;
+						break;
+					}
+				}
+				if(!isExsit) {
+					arr.push(tempNum);
+				}
+			}
+			return arr; //返回的是1~20之间的不重复随机数的数组
+		}
+
+		var tempImgNum = randomArr();
+		var overLoad = true; //判断图片是否加载完
+		function createLi() {
+			if(overLoad == true) {
+
+				overLoad = false;
+				var li = document.createElement("li");
+				//li.innerHTML = num;
+				li.innerHTML += "<a class='imga'><img /><span class='fangda'><img id='fangDa' src='img/fangda.png' /></span></a>";
+
+				var img = li.getElementsByTagName('img')[0];
+				img.src = "img/RSI/" + tempImgNum[num] + ".jpg";
+				//img.style.width = "100%";
+				//randomHeight = random(280, 350);
+				//li.style.height = randomHeight + 'px';
+				//img.style.height = randomHeight + 'px'
+				//img.style.height = "auto";
+
+				var minH = minUlHeight();
+				uls[minH].appendChild(li);
+
+				img.onload = function() {
+					overLoad = true; //当前图片加载完成后，再次去创建li
+					num++;
+					if(num < 79) {
+						createLi();
+					}
+					var shortest = shortestUl(); //得到最短的那一列U
+					newUls[shortest].appendChild(li); //将新的div插入到UL中
+				}
+
+				var lis = waterfall.getElementsByTagName("li");
+				//console.log(lis.length);//79
+				for(var i = 0; i < lis.length; i++) {
+					lis[i].onclick = function() {
+						var str = this.innerHTML;
+						//console.log(str);
+						var reg = /\d+/g;
+						var arr = str.match(reg);
+						//console.log(arr);
+
+						FangDa.style.display = "block";
+						FangDa_img.src = "img/RBI/" + arr[0] + ".jpg";
+						FangDa_img.style.width = "100%";
+						FangDa_img.style.height = "100%";
+
+						FangDa_img.onload = function() {
+							var windowWidth = $(window).width() * 0.8;
+							var windowHeight = $(window).height() * 0.8;
+							var windowS = windowWidth / windowHeight;
+
+							//console.log($("#FangDa_img").width());
+							var imgW = $("#FangDa_img").width();
+							var imgH = $("#FangDa_img").height();
+							var imgS = imgW / imgH;
+							//console.log(imgW);
+							//console.log(imgH);
+							//console.log(windowWidth);
+
+							if(windowS >= imgS) {
+								$("#FangDa_img").width(windowHeight * imgS);
+								$("#FangDa_img").height(windowHeight);
+							} else {
+								$("#FangDa_img").width(windowWidth);
+								$("#FangDa_img").height(windowWidth / imgS);
+							}
+
+							//console.log(FangDa_img.offsetWidth);
+							var l = ($(window).innerWidth() - $('#FangDa_img').outerWidth()) / 2;
+							var t = ($(window).innerHeight() - $('#FangDa_img').outerHeight()) / 2;
+							$('.frame').css({
+								left: l,
+								top: t
+							});
+						}
+					}
+				}
+			}
+		}
+
+		createLi();
+
+		function minUlHeight() {
+			var minIndex = 0;
+			for(var j = 0; j < uls.length; j++) {
+				if(uls[j].offsetHeight < uls[minIndex].offsetHeight) {
+					//console.log(uls.offsetHeight);
+					minIndex = j;
+				}
+			}
+			return minIndex;
+		}
+
+		FangDa.onclick = function() {
+
+			this.style.display = "none"
+		}
+
+		$(window).resize(function() {
+			responseJudge();
+			$('.FangDa').css({
+				'display': 'none'
+			});
+		});
+
+		//响应式布局判断
+
+		function responseJudge() {
+			var width = $(window).outerWidth();
+			if(width == 960) {
+				creatWF();
+				console.log('>960')
+			} else if(width == 640) {
+				creatWF();
+				console.log('>640')
+			}
+			//else {
+			//				console.log('<640')
+			//				creatWF();
+			//			}
+		}
+
+		function creatWF() {
+			num = 1;
+			changeUls();
+			for(var i = 0; i < newUls.length; i++) {
+				newUls[i].empty();
+			}
+			for(var i = 1; i < 81; i++) {
+				createLi();
+			}
+		}
+
+		function changeUls() {
+			newUls = [];
+			for(var i = 0; i < $('.waterfall>ul').length; i++) {
+				if($('.waterfall>ul').eq(i).css('display') != "none") {
+					newUls.push($('.waterfall>ul').eq(i));
+				}
+			}
+		}
+
+		function shortestUl() {
+			var minIndex = 0;
+			console.log(newUls.length)
+			for(var i = 1; i < newUls.length; i++) {
+				if(newUls[minIndex].height() > newUls[i].height()) {
+					minIndex = i;
+				}
+			}
+			return minIndex;
+		}
+		window.onload = function() {
+			creatWF();
+		}
+	</script>
+
+</html>

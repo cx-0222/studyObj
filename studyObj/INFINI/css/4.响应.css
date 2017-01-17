@@ -1,0 +1,64 @@
+@media only screen and (min-width: 310px) and (max-width:467px) {
+	
+	.top {
+		width: 93.5%;
+		font-size: 12px;
+		/*height: 76vh;*/
+		/*background-color: red;*/
+	}
+	.top1 {
+		width: 100%;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.top1>img {
+		width: 100%;
+	}
+	.top1_1{
+		width: 93.5%;
+	}
+	.top1_1>p {
+		width: 100%;
+	}
+	.top2 {
+		width: 100%;
+	}
+	.top3 {
+		width: 100%;
+	}
+	.top3>img {
+		width: 100%;
+		
+	}
+	.content {
+		width: 93.5%;;
+		font-size: 12px;
+	}
+	.content>div {
+		width: 47.5%;
+		/*float: left;*/
+		/*background-color: red;*/
+	}
+	ul {
+		width: 100%;
+		height: 84%;
+		line-height: 20px;
+	}
+	ul>li:nth-child(1) {
+		font-size: 20px;
+		margin-top: 25%;;
+	}
+	.content>div:nth-child(1),
+	.content>div:nth-child(3),
+	.content>div:nth-child(5),.content>div:nth-child(7)
+	 {
+		margin-right: 5%;
+	}
+	.content>div:nth-child(2),.content>div:nth-child(4),.content>div:nth-child(6),.content>div:nth-child(8){
+		margin-right: 0;
+	}
+	.content>div img {
+		width: 100%;
+	}
+	
+}

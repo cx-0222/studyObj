@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度糯米</title>
+	<style type="text/css">
+		*{
+		   	margin: 0;
+			padding: 0;
+		}
+		body,.head_box,.head_inf,.search_box,.title_box{
+			min-width: 1210px;
+		}
+		div{
+			display: block;
+		}
+		body{
+			/*font:12px/1.2;*/
+			color: #8c8c8c;
+			font-size: 12px;
+		}
+		a{
+			text-decoration: none;
+			color: #8c8c8c;
+			font-size: 12px
+		}
+		ul{
+			list-style: none;
+		}
+		h1,h2,h3,h4,h5,h6{
+			margin: 0;
+			padding: 0;
+		}
+		.down_logo{
+			display: inline-block;
+			width: 10px;
+			height: 8px;
+			margin-left: 2px;
+			background: url(cut/down.png);
+			background-repeat: no-repeat;
+		}
+		
+		
+
+		
+
+	</style>
+	<link rel="stylesheet" type="text/css" href="head.css">
+	<link rel="stylesheet" type="text/css" href="search.css">
+	<link rel="stylesheet" type="text/css" href="title.css">
+	<link rel="stylesheet" type="text/css" href="fenlei.css">
+	<link rel="stylesheet" type="text/css" href="brand.css">
+	<link rel="stylesheet" type="text/css" href="select.css">
+	<link rel="stylesheet" type="text/css" href="bodyBottom.css">
+</head>
+<body>
+	<div class="head_box">
+		<div class="head_inf">
+			<ul class="city">
+				<li class="city_city">上海
+				<span class="sep_lines"></span>
+				</li>
+				<li class="city_change">
+					<a class="c_c_c" href="">切换城市
+						<span class="down_logo"></span>
+					</a>
+					<div class="down_city">
+						<h3>热门城市</h3>
+						<ul>
+							<li><a href="">北京</a></li>
+							<li><a href="">上海</a></li>
+							<li><a href="">广州</a></li>
+							<li><a href="">深圳</a></li>
+							<li><a href="">天津</a></li>
+							<li><a href="">杭州</a></li>
+							<li><a href="">西安</a></li>
+							<li><a href="">淮北</a></li>
+							<li><a href="">重庆</a></li>
+							<li><a href="">澳门</a></li>
+							<li><a href="">厦门</a></li>
+							<li><a href="">苏州</a></li>
+							<li><a href="">宿州</a></li>
+							<li><a href="">安庆</a></li>
+							<li><a href="">新疆</a></li>
+							<li><a href="">齐齐哈尔</a></li>
+							<li><a href="">大连</a></li>
+							<li><a href="">云南</a></li>
+						</ul>
+						<a href="" class="morecity">更多城市></a>
+					</div>
+				</li>
+			</ul>
+			<ul class="user">
+				<li class="login">
+					<a href="">登录</a>
+					<span class="sep_lines"></span>
+				</li>
+				
+				<li>
+					<a href="">注册</a>
+					<span class="sep_lines"></span>
+				</li>
+				<li>
+					<a href="">糯米企业版
+						
+					</a>
+					<span class="sep_lines"></span>
+				</li>
+				<li class="phonenm">
+					<a href="" >手机糯米
+						<span class="down_logo"></span>
+					</a>
+					<span class="sep_lines"></span>
+					<p class="head_code">
+						<a href="" class="code_img"><img src="img/app.png" alt=""></a>
+					</p>
+				</li>
+				<li>
+					<a href="">我的订单</a>
+					<span class="sep_lines"></span>
+				</li>
+				<li class="mynuomi">
+					<a href="" >我的糯米
+						<span class="down_logo"></span>
+					</a>
+					<span class="sep_lines"></span>
+					<div class="user_list">
+						<a href="">我的订单</a>
+						<a href="">选坐订单</a>
+						<a href="">我的收藏</a>
+						<a href="">我的评价</a>
+						<a href="">账户余额</a>
+						<a href="">我的余额</a>
+						<a href="">我的优惠劵</a>
+						<a href="">账户设置</a>
+						<a href="">我的百度</a>
+					</div>
+				</li>
+				<li class="zjll">
+					<a href="">最近浏览
+						<span class="down_logo"></span>
+					</a>
+					<span class="sep_lines"></span>
+					<div class="zjll_menu">
+						<div class="zjll_menu_list">暂无浏览记录</div>
+					</div>
+				</li>
+				<li class="wssj">
+					<a href="">我是商家
+						<span class="down_logo"></span>
+					</a>
+					<span class="sep_lines"></span>
+					<div class="wssj_menu">
+						<a href="">商户中心</a>
+						<a href="">我想合作</a>
+					</div>
+				</li>
+				<li>
+					<a href="">帮助中心</a>
+					<span class="sep_lines"></span>
+				</li>
+				<li class="gz">
+					<a href="">关注
+						<span class="down_logo"></span>
+					</a>
+					<span class="sep_lines"></span>
+					<div class="gz_menu">
+						<div class="gz_menu_img"></div>
+					</div>
+				</li>
+				<li>
+					<a href="">收藏</a>
+					<span class="sep_lines"></span>
+				</li>
+				<li>
+					<a href="">食品安全</a>
+				
+				</li>
+			</ul>
+		</div>	
+	</div>
+
+	<div class="search_box">
+			<div class="logo">
+				<a href="">
+					<img src="img/logo.png" alt="">
+				</a>
+			</div>
+			<div class="search_inf">
+				<div class="main_search">
+				<!-- placeholder 属性提供可描述输入字段预期值的提示信息 -->
+					<input class="inputsearch" placeholder="搜索商家或地点" type="text">
+					<input class="subsearch" type="submit">
+				</div>
+				<!-- 推荐列表recommend -->
+				<ul class="recommend">
+					<li><a href="">聚优惠餐饮</a></li>
+					<li><a href="">避风塘</a></li>
+					<li><a href="">必胜客</a></li>
+				</ul>
+			</div>
+			<div class="return">
+				<a href="">
+					<div class="return_l">退</div>
+					<div class="return_m" style="">赔</div>
+					<div class="return_r">¥</div>
+				</a>
+			</div>
+	</div>
+
+	<div class="title_box">
+		<div class="title">
+			<ul class="title_list">
+				<li class="list1">
+					<span class="item">全部分类</span>
+				</li>
+				<li class="list2">
+					<a href="">首页</a>
+				</li>
+				<li class="list3">
+					<a href="">精选品牌</a>
+					<i>Hot</i>
+				</li>
+				<li class="list4">
+					<a href="">电影</a>
+					<i>Hot</i>
+				</li>
+				<li class="list5">
+					<a href="">酒店</a>
+				</li>
+				<li class="list6">
+					<a href="">出行</a>
+				</li>
+				<li class="list7">
+					<a href="">一元抢宝</a>
+				</li>
+				<li class="list8">
+					<a href="">外卖</a>
+				</li>
+				<li class="list9">
+					<a href="">今日新单</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="fenlei_box">
+		<div class="f_left">
+			<div class="f_l_item">
+				<div class="item1">
+					<a class="item1_1" href="">美食</a>
+					<a class="item1_2" href="">精选品牌</a>
+					<a class="item1_2" href="">小吃快餐</a>
+				</div>
+				<div class="item2">
+					<div class="item2_select">
+						<div class="item2_select_list" style="border-top:0">
+							<h3>热门分类</h3>
+							<ul>
+								<li><a href="" style="color:#ff4883">精选品牌</a></li>
+								<li><a href="">其他美食</a></li>
+								<li><a href="">火锅</a></li>
+								<li><a href="">小吃快餐</a></li>
+								<li><a href="">自助餐</a></li>
+								<li><a href="">海鲜</a></li>
+								<li><a href="">烧烤烤肉</a></li>
+								<li><a href="">干锅香锅</a></li>
+								<li><a href="">甜品</a></li>
+								<li><a href="">蛋糕</a></li>
+								<li><a href="">咖啡</a></li>
+								<li><a href="">夏日饮品</a></li>
+								<li><a href="">小龙虾</a></li>
+								<li><a href="">酒吧</a></li>
+								<li><a href="">粥店</a></li>
+							</ul>
+						</div>
+						<div class="item2_select_list">
+							<h3>中国菜</h3>
+							<ul>
+								<li><a href="">粤菜</a></li>
+								<li><a href="">川湘菜</a></li>
+								<li><a href="">北京菜</a></li>
+								<li><a href="">东北菜</a></li>
+								<li><a href="">云贵菜</a></li>
+								<li><a href="">鲁菜</a></li>
+								<li><a href="">西北菜</a></li>
+								<li><a href="">素食</a></li>
+								<li><a href="">创意菜/私房菜</a></li>
+								<li><a href="">台湾菜/客家菜</a></li>
+								<li><a href="">徽菜</a></li>
+								<li><a href="">烤鱼</a></li>
+								<li><a href="">烤鸭</a></li>
+								<li><a href="">麻辣烫/冒菜</a></li>
+								<li><a href="">中餐/家常菜</a></li>
+							</ul>
+						</div>
+						<div class="item2_select_list">
+							<h3>外国菜</h3>
+							<ul>
+								<li>日韩料理</li>
+								<li>西餐</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="f_l_item">
+				<div class="item1">
+					<a class="item1_1" href="">电影</a>
+					<a class="item1_2" href="">在线订座</a>
+					<a class="item1_2" href="">电影票团购</a>
+				</div>
+				<div class="item2">
+					<div class="item2_select">
+						<div class="item2_select_list" style="border-top:0">
+							<h3>热门影片</h3>
+							<ul>
+								<li><a href="">湄公河行动</a></li>
+								<li><a href="">幽灵医院</a></li>
+								<li><a href="">王牌逗王牌</a></li>
+								<li><a href="">铠甲勇士捕王</a></li>
+								<li><a href="">鲁滨逊漂流记</a></li>
+								<li><a href="">从你的全世界路过</a></li>
+								<li><a href="">爵迹</a></li>
+								<li><a href="">我是哪吒</a></li>
+								<li><a href="">逗鸟外传：萌宝满天飞</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="f_l_item">
+				<div class="item1">
+					<a class="item1_1" href="">休闲娱乐</a>
+					<a class="item1_2" href="">游乐园/水上乐园</a>
+				</div>
+				<div class="item2">
+					<div class="item2_select">
+						<div class="item2_select_list" style="border-top:0">
+							<h3>热门分类</h3>
+							<ul>
+								<li><a href="" style="color:#ff4883">精选品牌</a></li>
+								<li><a href="">其他美食</a></li>
+								<li><a href="">火锅</a></li>
+								<li><a href="">小吃快餐</a></li>
+								<li><a href="">自助餐</a></li>
+								<li><a href="">海鲜</a></li>
+								<li><a href="">烧烤烤肉</a></li>
+								<li><a href="">干锅香锅</a></li>
+								<li><a href="">甜品</a></li>
+								<li><a href="">蛋糕</a></li>
+								<li><a href="">咖啡</a></li>
+								<li><a href="">夏日饮品</a></li>
+								<li><a href="">小龙虾</a></li>
+								<li><a href="">酒吧</a></li>
+								<li><a href="">粥店</a></li>
+							</ul>
+						</div>
+						<div class="item2_select_list">
+							<h3>中国菜</h3>
+							<ul>
+								<li><a href="">粤菜</a></li>
+								<li><a href="">川湘菜</a></li>
+								<li><a href="">北京菜</a></li>
+								<li><a href="">东北菜</a></li>
+								<li><a href="">云贵菜</a></li>
+								<li><a href="">鲁菜</a></li>
+								<li><a href="">西北菜</a></li>
+								<li><a href="">素食</a></li>
+								<li><a href="">创意菜/私房菜</a></li>
+								<li><a href="">台湾菜/客家菜</a></li>
+								<li><a href="">徽菜</a></li>
+								<li><a href="">烤鱼</a></li>
+								<li><a href="">烤鸭</a></li>
+								<li><a href="">麻辣烫/冒菜</a></li>
+								<li><a href="">中餐/家常菜</a></li>
+							</ul>
+						</div>
+						<div class="item2_select_list">
+							<h3>外国菜</h3>
+							<ul>
+								<li>日韩料理</li>
+								<li>西餐</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="f_l_item">
+				<div class="item1">
+					<a class="item1_1" href="">一元抢宝</a>
+					<a class="item1_2" href="">苹果手机</a>
+					<a class="item1_2" href="">小米</a>
+				</div>
+			</div>
+			<div class="f_l_item">
+				<div class="item1">
+					<a class="item1_1" href="">生活服务</a>
+					<a class="item1_2" href="">丽人</a>
+					<a class="item1_2" href="">配镜</a>
+				</div>
+			</div>
+			<div class="f_l_item">
+				<div class="item1">
+					<a class="item1_1" href="">酒店</a>
+					<a class="item1_2" href="">上海</a>
+					<a class="item1_2" href="">北京</a>
+					<a class="item1_2" href="">广州</a>
+				</div>
+			</div>
+			<div class="f_l_item">
+				<div class="item1">
+					<a class="item1_1" href="">本地生活</a>
+					<a class="item1_2" href="">温泉洗浴</a>
+					<a class="item1_2" href="">采摘</a>
+				</div>
+			</div>
+			<div class="f_l_item">
+				<div class="item1">
+					<a class="item1_1" href="">丽人</a>
+					<a class="item1_2" href="">美发</a>
+					<a class="item1_2" href="">美容SPA</a>
+					<a class="item1_2" href="">美甲</a>
+				</div>
+			</div>
+		</div>
+		<div class="f_midder">
+			<div class="f_m_top">
+				<a href=""><img src="img/001.jpg"></a>
+			</div>
+			<div class="f_m_bottom">
+				<div class="bottom_1">
+					<div class="bottom_title">热门团购</div>
+					<ul class="bottom_list">
+						<li><a href="">电影</a></li>
+						<li><a href="" style="color: red">自助餐</a></li>
+						<li><a href="">KTV</a></li>
+						<li><a href="" style="color: red">火锅</a></li>
+						<li><a href="">蛋糕</a></li>
+						<li><a href="" style="color: red">酒店</a></li>
+						<li><a href="">小吃快餐</a></li>
+						<li><a href="">西餐</a></li>
+					</ul>
+				</div>
+				<div class="bottom_1">
+					<div class="bottom_title">全部区域</div>
+					<ul  class="bottom_list">
+						<li><a href="">地铁附近</a></li>
+						<li><a href="">浦东新区</a></li>
+						<li><a href="">闵行区</a></li>
+						<li><a href="">宝山区</a></li>
+						<li><a href="">普陀区</a></li>
+						<li><a href="">徐汇区</a></li>
+					</ul>
+				</div>
+				<div class="bottom_1" style="border-right: 0">
+					<div class="bottom_title">热门商圈</div>
+					<ul class="bottom_list">
+						<li><a href="">五角场</a></li>
+						<li><a href="">人民广场</a></li>
+						<li><a href="">梅川路</a></li>
+						<li><a href="">松江镇</a></li>
+						<li><a href="">金桥</a></li>
+						<li><a href="">奉贤</a></li>
+						<li><a href="">打浦桥</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="f_right">
+			<div class="f_r_top">
+				<a href=""><img src="img/002.jpg" alt=""></a>
+			</div>
+			<div class="f_r_bottom">
+				<a href=""><img src="img/003.png" alt=""></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="brand_box">
+		<div class="brand_l">
+			<div class="brand_title">
+				<span class="brand_title_1">精选品牌</span>
+				<span class="brand_title_2">Brand selection</span>
+				<span class="brand_title_3">
+					<a href="">全部</a>
+				</span>
+			</div>
+			<div class="brand_pic">
+				<div class="brand_pic_l">
+					<img src="img/004.png" alt="">
+				</div>
+				<div class="brand_pic_r">
+					<a href=""></a>
+					<ul>
+						<li><img src="img/01.jpg" alt=""></li>
+						<li><img src="img/02.jpg" alt=""></li>
+						<li><img src="img/03.jpg" alt=""></li>
+						<li><img src="img/04.jpg" alt=""></li>
+						<li style="border-right: 0"><img src="img/05.jpg" alt=""></li>
+						<li><img src="img/06.jpg" alt=""></li>
+						<li><img src="img/07.jpg" alt=""></li>
+						<li><img src="img/08.jpg" alt=""></li>
+						<li><img src="img/09.jpg" alt=""></li>
+						<li style="border-right: 0"><img src="img/10.jpg" alt=""></li>
+						<li><img src="img/11.jpg" alt=""></li>
+						<li><img src="img/12.jpg" alt=""></li>
+						<li><img src="img/13.jpg" alt=""></li>
+						<li><img src="img/14.jpg" alt=""></li>
+						<li style="border-right: 0"><img src="img/15.jpg" alt=""></li>
+						<li><img src="img/16.jpg" alt=""></li>
+						<li><img src="img/17.jpg" alt=""></li>
+						<li><img src="img/18.jpg" alt=""></li>
+						<li><img src="img/19.jpg" alt=""></li>
+						<li style="border-right: 0"><img src="img/20.jpg" alt=""></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="hot_topic">
+			<h2>热门专题</h2>
+			<a href="">
+				<div class="fengyunbang">
+					<div class="fengyunbang_l">
+						<h3>百度风云榜</h3>
+						<p>餐饮品牌大数据</p>
+					</div>
+					<div class="fengyunbang_r">
+						<img src="img/21.jpg" alt="">
+					</div>
+				</div>
+			</a>
+			<div class="shoppingMall">
+				<a href="">
+					<img src="img/22.jpg" alt="">
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="select_box">
+		<div class="food">
+			<div class="food_head">
+				<img src="cut/food.png" alt="">
+				<h3>美食</h3>
+				<ul class="food_head_r">
+					<li><a href="">精选品牌</a></li>
+					<li><a href="">小吃快餐</a></li>
+					<li><a href="">自助餐</a></li>
+					<li><a href="">其他美食</a></li>
+					<li><a href="">全部</a></li>
+				</ul>
+			</div>
+			<ul class="food_list">
+				<li class="food_list_1">
+					<a href="">
+						<div class="imgbox">
+							<div class="imgbox_1">
+								<img src="img/23.jpg" alt="">
+							</div>
+						</div>
+					</a>
+					<div class="img_inf">
+						<a href="">
+							<div class="img_inf_header">
+								<h4 class="img_inf_header_title">【7店通用】青花椒砂锅鱼</h4>
+							</div>
+							<p class="img_inf_p">100元代金券！屈臣氏千滋百味！免费WiFi！</p>
+						</a>
+						<!-- coupon：优惠劵 -->
+						<div class="coupon">
+							<span class="coupon_inf">验劵满返</span>
+						</div>
+						<div class="price_inf">
+							<span class="price">¥89.9</span>
+							<span class="old_pirce">价值¥100</span>
+						</div>
+						<!-- evaluate：评价 -->
+						<div class="evaluate">
+							<span class="evaluate_1">4.7分</span>
+							<span class="evaluate_2">已售7507</span>
+							<div class="evaluate_border"></div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<a href="">
+						<div class="imgbox">
+							<div class="imgbox_1">
+								<img src="img/24.jpg" alt="">
+							</div>
+						</div>
+					</a>
+					<div class="img_inf">
+						<a href="">
+							<div class="img_inf_header">
+								<h4 class="img_inf_header_title">【多店通用】紫燕百味鸡</h4>
+							</div>
+							<p class="img_inf_p">22元代金券</p>
+						</a>
+						<!-- coupon：优惠劵 -->
+						<div class="coupon">
+							<!-- <span class="coupon_inf"></span> -->
+						</div>
+						<div class="price_inf">
+							<span class="price">¥20</span>
+							<span class="old_pirce">价值¥22</span>
+						</div>
+						<!-- evaluate：评价 -->
+						<div class="evaluate">
+							<span class="evaluate_1">4.7分</span>
+							<span class="evaluate_2">已售25825</span>
+							<div class="evaluate_border"></div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<a href="">
+						<div class="imgbox">
+							<div class="imgbox_1">
+								<img src="img/25.jpg" alt="">
+							</div>
+						</div>
+					</a>
+					<div class="img_inf">
+						<a href="">
+							<div class="img_inf_header">
+								<h4 class="img_inf_header_title">【人民广场】鑫海汇海鲜自助烤肉</h4>
+							</div>
+							<p class="img_inf_p">人民广场店-海鲜自助烤肉1位！节假日通用！</p>
+						</a>
+						<!-- coupon：优惠劵 -->
+						<div class="coupon">
+							<span class="coupon_inf">立减5.5元</span>
+						</div>
+						<div class="price_inf">
+							<span class="price">¥79.9</span>
+							<span class="old_pirce">价值¥98</span>
+						</div>
+						<!-- evaluate：评价 -->
+						<div class="evaluate">
+							<span class="evaluate_1">4.6分</span>
+							<span class="evaluate_2">已售101846</span>
+							<div class="evaluate_border"></div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<a href="">
+						<div class="imgbox">
+							<div class="imgbox_1">
+								<img src="img/26.jpg" alt="">
+							</div>
+						</div>
+					</a>
+					<div class="img_inf">
+						<a href="">
+							<div class="img_inf_header">
+								<h4 class="img_inf_header_title">【五角场】曼哈顿自助海鲜</h4>
+							</div>
+							<p class="img_inf_p">午市自助餐1位！免费WiFi！</p>
+						</a>
+						<!-- coupon：优惠劵 -->
+						<div class="coupon">
+							<span class="coupon_inf">立减7.5元</span>
+						</div>
+						<div class="price_inf">
+							<span class="price">¥108</span>
+							<span class="old_pirce">价值¥118</span>
+						</div>
+						<!-- evaluate：评价 -->
+						<div class="evaluate">
+							<span class="evaluate_1">4.7分</span>
+							<span class="evaluate_2">已售4036</span>
+							<div class="evaluate_border"></div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<a href="">
+						<div class="imgbox">
+							<div class="imgbox_1">
+								<img src="img/26.jpg" alt="">
+							</div>
+						</div>
+					</a>
+					<div class="img_inf">
+						<a href="">
+							<div class="img_inf_header">
+								<h4 class="img_inf_header_title">【五角场】曼哈顿自助海鲜</h4>
+							</div>
+							<p class="img_inf_p">晚市自助餐1位！免费WiFi！</p>
+						</a>
+						<!-- coupon：优惠劵 -->
+						<div class="coupon">
+							<span class="coupon_inf">立减8元</span>
+						</div>
+						<div class="price_inf">
+							<span class="price">¥128</span>
+							<span class="old_pirce">价值¥138</span>
+						</div>
+						<!-- evaluate：评价 -->
+						<div class="evaluate">
+							<span class="evaluate_1">4.5分</span>
+							<span class="evaluate_2">已售3108</span>
+							<div class="evaluate_border"></div>
+						</div>
+					</div>
+				</li>
+				<li  class="food_list_1">
+					<a href="">
+						<div class="imgbox">
+							<div class="imgbox_1">
+								<img src="img/25.jpg" alt="">
+							</div>
+						</div>
+					</a>
+					<div class="img_inf">
+						<a href="">
+							<div class="img_inf_header">
+								<h4 class="img_inf_header_title">【人民广场】鑫海汇海鲜自助烤肉</h4>
+							</div>
+							<p class="img_inf_p">午市特惠豪华自助餐1份！免费WiFi！</p>
+						</a>
+						<!-- coupon：优惠劵 -->
+						<div class="coupon">
+							<span class="coupon_inf">验劵满返</span>
+						</div>
+						<div class="price_inf">
+							<span class="price">¥56</span>
+							<span class="old_pirce">价值¥78</span>
+						</div>
+						<!-- evaluate：评价 -->
+						<div class="evaluate">
+							<span class="evaluate_1">4.5分</span>
+							<span class="evaluate_2">已售2431</span>
+							<!-- <div class="evaluate_border"></div> -->
+						</div>
+					</div>
+				</li>
+				<li>
+					<a href="">
+						<div class="imgbox">
+							<div class="imgbox_1">
+								<img src="img/25.jpg" alt="">
+							</div>
+						</div>
+					</a>
+					<div class="img_inf">
+						<a href="">
+							<div class="img_inf_header">
+								<h4 class="img_inf_header_title">【人民广场】鑫海汇海鲜自助烤肉</h4>
+							</div>
+							<p class="img_inf_p">人民广场路店单人自助午餐，免费WiFi！</p>
+						</a>
+						<!-- coupon：优惠劵 -->
+						<div class="coupon">
+							<!-- <span class="coupon_inf">验劵满返</span> -->
+						</div>
+						<div class="price_inf">
+							<span class="price">¥67</span>
+							<span class="old_pirce">价值¥78</span>
+						</div>
+						<!-- evaluate：评价 -->
+						<div class="evaluate">
+							<span class="evaluate_1">4.6分</span>
+							<span class="evaluate_2">已售16586</span>
+							<!-- <div class="evaluate_border"></div> -->
+						</div>
+					</div>
+				</li>
+				<li>
+					<a href="">
+						<div class="imgbox">
+							<div class="imgbox_1">
+								<img src="img/27.jpg" alt="">
+							</div>
+						</div>
+					</a>
+					<div class="img_inf">
+						<a href="">
+							<div class="img_inf_header">
+								<h4 class="img_inf_header_title">【2店通用】五月罗马</h4>
+							</div>
+							<p class="img_inf_p">五月罗马单人午市海鲜自助餐，徐汇店9月24日重装开业！</p>
+						</a>
+						<!-- coupon：优惠劵 -->
+						<div class="coupon">
+							<span class="coupon_inf">立减8元</span>
+						</div>
+						<div class="price_inf">
+							<span class="price">¥99</span>
+							<span class="old_pirce">价值¥118</span>
+						</div>
+						<!-- evaluate：评价 -->
+						<div class="evaluate">
+							<span class="evaluate_1">4.6分</span>
+							<span class="evaluate_2">已售43913</span>
+							<!-- <div class="evaluate_border"></div> -->
+						</div>
+					</div>
+				</li>
+				<li>
+					<a href="">
+						<div class="imgbox">
+							<div class="imgbox_1">
+								<img src="img/26.jpg" alt="">
+							</div>
+						</div>
+					</a>
+					<div class="img_inf">
+						<a href="">
+							<div class="img_inf_header">
+								<h4 class="img_inf_header_title">【平凉路】曼哈顿自助海鲜</h4>
+							</div>
+							<p class="img_inf_p">屈臣氏千滋百味单人午市自助餐！提供免费WiFi，免费WiFi！</p>
+						</a>
+						<!-- coupon：优惠劵 -->
+						<div class="coupon">
+							<span class="coupon_inf">立减7.5元</span>
+						</div>
+						<div class="price_inf">
+							<span class="price">¥108</span>
+							<span class="old_pirce">价值¥115</span>
+						</div>
+						<!-- evaluate：评价 -->
+						<div class="evaluate">
+							<span class="evaluate_1">4.6分</span>
+							<span class="evaluate_2">已售32684</span>
+							<!-- <div class="evaluate_border"></div> -->
+						</div>
+					</div>
+				</li>
+				<li>
+					<a href="">
+						<div class="imgbox">
+							<div class="imgbox_1">
+								<img src="img/28.jpg" alt="">
+							</div>
+						</div>
+					</a>
+					<div class="img_inf">
+						<a href="">
+							<div class="img_inf_header">
+								<h4 class="img_inf_header_title">【四川北路】金滏山</h4>
+							</div>
+							<p class="img_inf_p">单人晚市自助套餐！提供免费WiFi，免费WiFi！</p>
+						</a>
+						<!-- coupon：优惠劵 -->
+						<div class="coupon">
+							<span class="coupon_inf">验劵满返</span>
+						</div>
+						<div class="price_inf">
+							<span class="price">¥59</span>
+							<span class="old_pirce">价值¥89</span>
+						</div>
+						<!-- evaluate：评价 -->
+						<div class="evaluate">
+							<span class="evaluate_1">4.3分</span>
+							<span class="evaluate_2">已售5226</span>
+							<!-- <div class="evaluate_border"></div> -->
+						</div>
+					</div>
+				</li>
+			</ul>
+			<a class="check_all" href="">查看全部团购</a>
+		</div>
+		<!-- 因酒店——丽人代码与food相似，故省略 -->
+		<div class="select_bottom">
+			<div class="select_bottom_details">
+				<ul class="select_bottom_details_title">
+					<li><a class="bottom_hotMarker" href="">热门商城</a></li>
+					<li><a class="bottom_hotCity" href="">热门城市</a></li>
+					<li><a class="bottom_tuangoufenlei" href="">团购分类</a></li>
+				</ul>
+				<div class="select_bottom_content">
+					<ul class="bottom_hotMarker_link">
+						<li><a href="">日月光中心</a></li>
+						<li><a href="">正大广场</a></li>
+						<li><a href="">美罗城</a></li>
+						<li><a href="">万达广场(周浦店)</a></li>
+						<li><a href="">凯德龙之梦购物中心(长宁店)</a></li>
+						<li><a href="">金桥国际商业广场</a></li>
+						<li><a href="">正大乐城</a></li>
+						<li><a href="">梅龙镇广场</a></li>
+						<li><a href="">仲盛世界商城</a></li>
+						<li><a href="">悦达859广场</a></li>
+						<li><a href="">96广场</a></li>
+						<li><a href="">星游城</a></li>
+						<li><a href="">百联西郊购物中心</a></li>
+						<li><a href="">文峰广场</a></li>
+						<li><a href="">818广场</a></li>
+						<li><a href="">龙阳广场</a></li>
+						<li><a href="">新大陆广场</a></li>
+						<li><a href="">传奇广场</a></li>
+						<li><a href="">三林金谊广场</a></li>
+						<li><a href="">缤谷广场</a></li>
+						<li><a href="">宏伊广场</a></li>
+						<li><a href="">莘庄龙之梦</a></li>
+						<li><a href="">置地广场</a></li>
+						<li><a href="">嘉茂七宝购物广场</a></li>
+						<li><a href="">百联东郊购物中心</a></li>
+					</ul>
+				</div>
+				<div class="select_bottom_content" style="display: none;"></div>
+				<div class="select_bottom_content" style="display: none;"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="body_bottom_box">
+		<div class="bottom_inf">
+			<div class="bottom_inf_content">
+				<div class="bottom_inf_content_1">
+					<h3>用户帮助</h3>
+					<ul>
+						<li><a href="">常见团购问题</a></li>
+						<li><a href="">开放API</a></li>
+					</ul>
+				</div>
+				<div class="bottom_inf_content_2">
+					<h3>手机百度助手</h3>
+					<ul>
+						<li><a href="">百度糯米触屏版</a></li>
+						<li><a href="">下载手机版</a></li>
+					</ul>
+				</div>
+				<div class="bottom_inf_content_2">
+					<h3>商务合作</h3>
+					<ul>
+						<li><a href="">友情链接</a></li>
+						<li><a href="">市场合作</a></li>
+					</ul>
+				</div>
+				<div class="bottom_inf_content_2">
+					<h3>公司信息</h3>
+					<ul>
+						<li><a href="">关于百度糯米</a></li>
+						<li><a href="">百度糯米新浪微博</a></li>
+						<li><a href="">违规投诉&廉政举报</a></li>
+					</ul>
+				</div>
+				<div class="bottom_inf_content_3">
+					<h3>4006-888-887</h3>
+					<ul>
+						<li><a href="">周一至周日 9:00-22:00</a></li>
+						<li><a href="">客服电话 免长途费</a></li>
+					</ul>
+					<a class="mobile_btn" href="">手机专享优惠</a>
+				</div>
+			</div>
+		</div>
+		<div class="copyright_inf">
+			<div class="site_inf">
+				<span>&copy;</span>
+				2016&nbsp;nuomi.com    &nbsp;
+				<a href="">京ICP证030173号</a>
+ 				&nbsp;京公网安备11010802014106号&nbsp;
+ 
+				<a href="">营业执照信息</a>
+			</div>
+			<div class="icons">
+				<span class="icons_qianbao">百度钱包</span>
+				<span class="icons_zhifubao">支付宝-特约商家</span>
+				<span class="icons_lexin">可信网站 身份验证</span>
+				<span class="icons_web">网站认证 Web Trust</span>
+			</div>
+		</div>
+		<div class="last">
+			<a href="">
+				<img src="img/29.png" alt="" style="float: left;border: 0">
+				<p style="float: left;height: 20px;line-height: 20px;margin-right: 5px;color: #939393">京公网安备 11000002000001号</p>
+			</a>
+		</div>
+	</div>
+</body>
+</html>

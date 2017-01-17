@@ -1,0 +1,78 @@
+			.footer_wrap1 {
+				width: 100%;
+				margin: 0 auto;
+				padding: 0px 0 0;
+			}
+			
+			.j_share {
+				text-align: center;
+				margin-top: 45px;
+				width: 100%;
+			}
+			
+			#mail {
+				width: 25px;
+				height: 19px;
+			}
+			
+			#mail_h {
+				position: absolute;
+				width: 25px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				opacity: 1;
+			}
+			
+			.j_share>a:hover #mail_h {
+				opacity: 0;
+			}
+			
+			.share_other {
+				margin-top: 12px;
+			}
+			
+			.share_wrap {
+				width: 137px;
+				min-width: 137px;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			
+			.share_wrap>a {
+				width: 25%;
+				text-align: center;
+				float: left;
+				position: relative;
+			}
+			
+			#facebook_h,
+			#youtube_h,
+			#linkedln_h,
+			#twitter_h {
+				position: absolute;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				opacity: 1;
+			}
+			
+			.share_wrap>a:hover #twitter_h,
+			.share_wrap>a:hover #linkedln_h,
+			.share_wrap>a:hover #youtube_h,
+			.share_wrap>a:hover #facebook_h {
+				opacity: 0;
+			}
+			
+			.j_footer {
+				width: 100%;
+				height: 4em;
+				text-align: center;
+				line-height: 4em;
+				overflow: hidden;
+			}
+			
+			.j_copyright {
+				color: #808080;
+				font-size: 10px;
+			}

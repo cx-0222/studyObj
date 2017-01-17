@@ -1,0 +1,43 @@
+.start {
+	position: absolute;
+	width: 100%;
+	/*height: 100%;*/
+	/*display: none;*/
+}
+.st_logo {
+	position: absolute;
+	left: 50%;
+	top: 150px;
+	margin-left: -89px;
+}
+.st_logo span {
+	width: 178px;
+	height: 48px;
+	/*使用css精灵图实现*/
+	background:url(../img/atlas.png) -702px -182px no-repeat;
+}
+.st_bird {
+	position: absolute;
+	top: 260px;
+	left: 50%;
+	margin-left: -17px;
+}
+.st_bird span {
+	width: 34px;
+	height: 24px;
+	background: url(../img/bird/bird_b0.png);
+}
+.st_btn {
+	position: absolute;
+	top: 420px;
+	left: 50%;
+	margin-left: -52px;
+}
+.st_btn span {
+	width: 104px;
+	height: 58px;
+	background: url(../img/other/start.png);
+}
+.st_btn:active {
+	opacity: 0.4;
+}

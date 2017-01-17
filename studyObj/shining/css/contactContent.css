@@ -1,0 +1,155 @@
+.contact_content_wrap {
+	position: relative;
+	text-align: center;
+	padding-top: 7em;
+	padding-bottom: 17em;
+	background: url(../img/contact_point_bg.png) no-repeat;
+	background-color: #f5f5f5;
+	background-position: center 69px;
+}
+
+.con_wrap {
+	margin-bottom: 30px;
+}
+
+.con_wrap span {
+	font-size: 1.4em;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.con_wrap em {
+	font-size: 1.1em;
+	vertical-align: middle;
+	font-weight: bold;
+	font-style: normal;
+	color: #595757;
+}
+
+.mail_wrap {
+	margin-bottom: 5em;
+}
+
+.mail_wrap img {
+	vertical-align: middle;
+	margin-right: 7px;
+	width: 32px;
+}
+
+.mail_wrap span {
+	font-size: 1.4em;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.mail_wrap em {
+	font-size: 1.1em;
+	vertical-align: middle;
+	font-style: normal;
+	color: #595757;
+}
+
+.contact_phone_wrap {
+	width: 75%;
+	margin: 0 auto;
+	overflow: hidden;
+	zoom: 1;
+	font-size: 0.8em;
+	padding-left: 23%;
+	min-width: 640px;
+}
+
+.contact_phone_list {
+	float: left;
+	width: 33%;
+	position: relative;
+	text-align: left;
+	color: #595757;
+}
+
+.other_one_list {
+	width: 25%;
+	min-width: 172px;
+}
+
+.contact_phone_list div {
+	margin-right: 7px;
+	float: left;
+}
+
+.other_two_list {
+	width: 20%;
+	min-width: 141px;
+}
+
+#phone_num {
+	position: absolute;
+	bottom: 0;
+	margin-bottom: 11px;
+	margin-left: 3px;
+}
+
+.other_three_list {
+	width: 50%;
+	min-width: 323px;
+}
+
+@media only screen and (min-width: 938px) and (max-width: 990px) {
+	/*.contact_content_wrap {
+		padding-bottom: 15em;
+	}*/
+	.other_one_list {
+		width: 30%;
+		min-width: 172px;
+	}
+	/*.other_three_list {
+		padding-top: 15px;
+	}*/
+}
+
+@media only screen and (min-width: 640px) and (max-width: 938px) {
+	/*.contact_content_wrap {
+		padding-bottom: 15em;
+	}*/
+	.other_one_list {
+		width: 30%;
+		min-width: 172px;
+	}
+	.other_three_list {
+		padding-top: 15px;
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	/*.contact_content_wrap {
+		padding-bottom: 15em;
+	}*/
+	.other_one_list {
+		width: 30%;
+		min-width: 172px;
+	}
+	.other_three_list {
+		padding-top: 15px;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.other_one_list {
+		width: 100%;
+		min-width: 172px;
+	}
+	.other_two_list {
+		padding-top: 15px;
+		width: 100%;
+	}
+}
+
+.contact_background {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.contact_background img {
+	width: 100%;
+}

@@ -1,0 +1,52 @@
+.floor div {
+	-webkit-animation: floorMove 3s linear infinite;
+}
+@-webkit-keyframes floorMove{
+	from{
+		left: 0px;
+	}
+	to{
+		left: -100%;
+	}
+}
+
+.st_logo {
+	/*alternate 来回运动*/
+	-webkit-animation: logoScale 1s linear infinite alternate;
+}
+@-webkit-keyframes logoScale{
+	from{
+		transform: scale(0.8);
+	}
+	to{
+		transform: scale(1.2);
+	}
+}
+
+.st_bird span, .bird span {
+	-webkit-animation: birdFly 0.5s linear infinite alternate;
+}
+
+@-webkit-keyframes birdFly{
+	0%{
+		background-image: url(../img/bird/bird_b0.png);
+	}
+	50%{
+		background-image: url(../img/bird/bird_b1.png);
+	}
+	100%{
+		background-image: url(../img/bird/bird_b2.png);
+	}
+}
+.st_bird, .jump {
+	-webkit-animation: birdJump 1s linear infinite alternate;
+}
+@-webkit-keyframes birdJump{
+	0%{
+		top: 260px;
+	}
+	100%{
+		top: 280px;
+	}
+	
+}

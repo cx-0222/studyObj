@@ -1,0 +1,98 @@
+@font-face {
+	font-family:birdFont;
+	src: url(../font/321impact.ttf);
+}
+
+.flappyBird {
+	font-family: birdFont;
+	/*最大手机尺寸*/
+	width: 100%;
+	height: 100%;
+	/*width: 412px;*/
+	/*width: 382px;*/
+	/*height: 681px;*/
+	/*background: url(../img/atlas.png) no-repeat;*/
+	/*图片为360x640*/
+	background: url(../img/bgDay.png) repeat-x;
+	/*background-size:100% 681px ;*/
+}
+
+.floor {
+/*	background-color: blue;*/
+	width: 100%;
+	height: 400px;
+	background: url(../img/other/floor_bg.png);
+	background-position: -584px 0 ;
+	position: absolute;
+	/*鸟活动范围520*/
+	top: 520px;
+	left: 0;
+}
+.floor>div {
+	width: 1000px;
+	height: 22px;
+	background: url(../img/other/floor.png) repeat-x;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.bird {
+	position: absolute;
+	top: 48%;
+	left: 70px;
+	display: none;
+}
+.bird span {
+	width: 34px;
+	height: 24px;
+	background: url(../img/bird/bird_b0.png);
+}
+
+.score {
+	position: absolute;
+	top: 80px;
+	left: 50%;
+	margin-left: -30px;
+	display: none;
+	
+}
+.score span {
+	color: white;
+	width: 60px;
+	text-align: center;
+	font: normal 30px/30px "birdFont";
+	
+}
+.pipe {
+	position: absolute;
+	/*top: 0;*/
+	/*right: 50px;*/
+	width: 52px;
+	height: 520px;
+	/*background-color: red;*/
+	
+	display: none;
+}
+.pipe li {
+	position: absolute;
+	width: 52px;
+	height: 520px;
+	overflow: hidden;
+}
+.pp_up{
+	width: 52px;
+	height: 320px;
+	background: url(../img/pipe/pipe_day_up.png);
+	position: absolute;
+	/*活动范围-200 ~ -40之间*/
+	top: -40px;
+	
+}
+.pp_down{
+	width: 52px;
+	height: 320px;
+	background: url(../img/pipe/pipe_day_down.png);
+	position: absolute;
+	/*活动范围-40 ~ -200*/
+	bottom: -200px;
+}

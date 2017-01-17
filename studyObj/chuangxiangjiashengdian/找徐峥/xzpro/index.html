@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script type="text/javascript" src="js/zepto.min.js"></script>
+</head>
+<body>
+	<div id="audiocontainer" style="display:none">
+	    <audio id="bgsound" loop="loop" preload autoplay="autoplay" src="sound/bg.mp3">
+	    </audio>
+	</div>
+    <div style="display:none">
+	    <audio id="typesound" loop="loop" preload src="sound/type.mp3"></audio>
+	</div>
+	<div id="wrap">
+		<div id="loading">
+            <img id="loading_bg" src="img/loading_bg.png">
+			<img id="loading_xuzheng" src="img/loading_xuzheng.png">
+			<img id="loading_star1" src="img/star.png">
+			<img id="loading_star2" src="img/star1.png">
+			<img id="loading_txt" src="img/loading_txt.png">
+		</div>
+		<div id="word_wrap">
+			<div id="word"></div>
+				<img src="img/star2.png" id="word_star1">
+				<img src="img/star4.png" id="word_star2">
+				<img src="img/star3.png" id="word_star3">
+				<img src="img/star5.png" id="word_star4">
+			<div id="supers">
+				<img src="img/super_head.png" id="super_head">
+				<img src="img/super_body1.png" id="super_body">
+				<img src="img/super_glasses.png" id="glasses">
+			</div>			
+			<div id="phone_wrap">
+				<img src="img/phone.png" id="phone">
+				<div id="chip1">
+					<img src="img/chip1.png">
+					<img src="img/super_head.png">
+				</div>
+				<div id="chip2">
+					<img src="img/chip2.png">
+					<img src="img/super_head.png">
+				</div>
+				<div  id="chip3">
+					<img src="img/chip3.png">
+					<img src="img/super_head.png">
+				</div>
+				<div id="chip4">
+					<img src="img/chip4.png">
+					<img src="img/super_head.png">
+				</div>
+				<div  id="chip5">
+					<img src="img/chip5.png">
+					<img src="img/super_head.png">
+				</div>
+				<div id="chip6">
+					<img src="img/chip6.png">
+					<img src="img/super_head.png">
+				</div>
+				<div id="chip7">
+					<img src="img/chip7.png">
+					<img src="img/super_head.png">
+				</div>
+				<div id="chip8">
+					<img src="img/chip8.png">
+					<img src="img/super_head.png">
+				</div>
+				<ul id="star">
+					<img src="img/star11.png">
+					<img src="img/star10.png">
+					<img src="img/star5.png">
+					<img src="img/star9.png">
+					<img src="img/star4.png">
+					<img src="img/star6.png">
+					<img src="img/star7.png">
+					<img src="img/star8.png">
+				</ul>
+			</div>
+		</div>
+        <div id="music_btn">
+            <img src="img/music_on.png" id="music_on">
+            <img src="img/music_off.png" id="music_off">
+        </div>
+		<a id="up" href="next.html">
+			<p>找齐徐峥 启动能量</p>
+			<img src="img/up.png">
+		</a>
+	<script>
+</script>
+</body>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+var pic_load =["img/word_bg.png","img/loading_xuzheng.png","img/loading_txt.png","img/star.png","img/star2.png","img/star4.png","img/star3.png","img/star5.png","img/super_head.png","img/super_body1.png","img/super_glasses.png","img/phone.png","img/chip1.png","img/chip2.png","img/chip3.png","img/chip4.png","img/chip5.png","img/chip6.png","img/chip7.png","img/chip8.png","img/star11.png","img/star10.png","img/star5.png","img/star9.png","img/star4.png","img/star6.png","img/star7.png","img/star8.png","img/up.png","img/baobei.png","img/bg.jpg","img/xuzheng.png","img/color_yan.png","img/CSSatyr.png","img/game_info_bt.png","img/kuang_bg.png","img/one_guan_pic.png","img/one_pic1.png","img/one_pic2.png","img/one_pic3.png","img/person_kuang.png","img/tietou.png","img/vivo_mobile.png","img/xuzheng_kuang.png","img/xuzheng_succ_kuang.png"];
+var n = 0;
+var typesound = document.getElementById('typesound');
+var bol = true;
+typesound.play();
+typesound.pause();    
+
+for (var i = 0; i < pic_load.length; i++) {
+	var loding_pic = new Image();
+		loding_pic.src = pic_load[i];
+	loding_pic.onload = function(){
+		n++;
+		// alert(n/pic_load.length);
+		if ((n/pic_load.length)>0.9 && bol) {
+			bol = false;
+			loading.style.display = "none";
+			word_wrap.style.display = "block";
+			flyFn();
+			run(0);
+			return;
+		}
+	}
+
+}
+    }    
+    </script>
+
+</html>

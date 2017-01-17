@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<node id="n1">
+		<dir>bag.gif</dir>
+		<prop>30,33</prop>
+		<pos>100,267</pos>
+		<add>10</add>
+		<item>1</item>
+	</node>
+	<node id="n2">
+		<dir>gold.gif</dir>
+		<prop>45,41</prop>
+		<pos>404,367</pos>
+		<add>20</add>
+		<money>50</money>
+	</node>
+	<node id="n3">
+		<dir>gold.gif</dir>
+		<prop>45,41</prop>
+		<pos>540,320</pos>
+		<add>20</add>
+		<money>100</money>
+	</node>
+	<node id="n4">
+		<dir>gold.gif</dir>
+		<prop>45,41</prop>
+		<pos>540,120</pos>
+		<add>5</add>
+		<money>5</money>
+	</node>
+	<node id="n5">
+		<dir>stone.gif</dir>
+		<prop>36,35</prop>
+		<pos>260,267</pos>
+		<add>15</add>
+		<money>3</money>
+	</node>
+	<node id="n6">
+		<dir>stone.gif</dir>
+		<prop>40,34</prop>
+		<pos>128,169</pos>
+		<add>10</add>
+		<money>5</money>
+	</node>
+	<node id="n7">
+		<dir>tone.gif</dir>
+		<prop>66,81</prop>
+		<pos>284,302</pos>
+		<add>5</add>
+		<money>15</money>
+	</node>
+	<node id="n8">
+		<dir>tone.gif</dir>
+		<prop>43,29</prop>
+		<pos>384,202</pos>
+		<add>5</add>
+		<money>15</money>
+	</node>
+	<node id="n9">
+		<dir>diamond.gif</dir>
+		<prop>22,18</prop>
+		<pos>184,402</pos>
+		<add>5</add>
+		<money>500</money>
+	</node>
+	<rule>
+		<mtime>60</mtime>
+		<goal>10</goal>
+	</rule>
+</root>

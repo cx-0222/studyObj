@@ -1,0 +1,8 @@
+.footer {
+	width: 958px;
+	height: 80px;
+	margin-top: 20px;
+	border: 1px solid black;
+	border-radius: 7px;
+	background: url(img/footer.png);
+}

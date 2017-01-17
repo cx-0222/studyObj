@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+	</head>
+
+	<body>
+		<!--最大盒子-->
+		<!--小图请求的时候太麻烦，精灵图只用发送一次请求，为了减少请求次数，所以推荐使用精灵图-->
+		<!--下面是发送http网路请求，去缓存css精灵图，但是不用给用户看，所以display:none-->
+		<img src="img/atlas.png" style="display: none;" />
+		<div class="wrap" style="width: 100%; height: 100%;">
+			<div class="flappyBird">
+
+				<!--4.主体页面 游戏页面-->
+				<!--地板-->
+				<div class="floor">
+					<div></div>
+				</div>
+				<!--鸟-->
+				<div class="bird jump">
+					<span></span>
+				</div>
+				<!--管道-->
+				<ul class="pipe">
+					<!--<li class="">
+						<div class="pp_up"></div>
+						<div class="pp_down"></div>
+					</li>-->
+				</ul>
+				<!--分数-->
+				<div class="score">
+					<span>0</span>
+				</div>
+				<!--1.开始页面-->
+				<div class="start">
+					<div class="st_logo">
+						<span></span>
+					</div>
+					<div class="st_bird">
+						<span></span>
+					</div>
+					<div class="st_btn">
+						<span></span>
+					</div>
+				</div>
+
+				<!--2.提示页面-->
+				<div class="prompt">
+					<div class="pt_ready"></div>
+					<div class="pt_tab"></div>
+				</div>
+
+				<!--3.结束页面-->
+				<div class="gameOver">
+					<div class="go_title"></div>
+					<div class="go_sign">
+						<span id="end_medal"></span>
+						<span id="end_score"></span>
+						<span id="best_score"></span>
+					</div>
+					<div class="go_restar"></div>
+				</div>
+
+			</div>
+		</div>
+		<!--声音-->
+		<!--过关-->
+		<audio id="score_music" src="source/sfx_point.ogg"></audio>
+		<!--挂了-->
+		<audio id="die_music" src="source/sfx_die.ogg"></audio>
+		<!--碰撞-->
+		<audio id="hit_music" src="source/sfx_hit.ogg"></audio>
+		<!--飞行-->
+		<audio id="fly_music1" src="source/sfx_swooshing.ogg"></audio>
+		<audio id="fly_music2" src="source/sfx_wing.ogg"></audio>
+	</body>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

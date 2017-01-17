@@ -1,0 +1,33 @@
+.nav {
+	width: 100%;
+	height: 68px;
+	position: relative;
+	font-size: 12px;
+	margin: 15px auto;
+}
+p, a {
+	text-decoration: none;
+	margin: 0;
+	color: black;
+}
+.nav>a {
+	display: block;
+	width: 68px;
+	height: 68px;
+	text-align: center;
+
+
+}
+
+.n_a1, .n_a2, .n_a3, .n_a4, .n_a5 {
+	float: left;
+}
+.n_a6 {
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	margin-left: -111px;
+}
+.n_a7, .n_a8, .n_a9, .n_a10, .n_a11 {
+	float: right;
+}

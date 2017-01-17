@@ -1,0 +1,67 @@
+.title_box{
+			position: relative;
+			height: 44px;
+			/*z-index: 10*/
+		}
+		.title{
+			width: 1210px;
+			margin:0 auto;
+			position: relative;
+			background-color: #FFFF76
+		}
+		.title_list{
+			background-color: #313137;
+			height: 44px;
+		}
+		.title_list li{
+			float: left;
+			position: relative;
+		}
+		.list1{
+			width: 226px;
+			height: 44px;
+			cursor: pointer;
+			line-height: 44px;
+			font-size: 18px;
+			text-align: left;
+			background-color: #ff318c;
+		}
+		.list1 span{
+			display: block;
+			color: white;
+			min-width: 86px;
+			padding-left: 18px;
+			
+		}
+		.list2 a,.list3 a,.list4 a,.list5 a,.list6 a,.list7 a,.list8 a,.list9 a{
+			padding: 0 10px;
+			min-width: 86px;
+			font-size: 18px;
+			color: white;
+			text-align: center;
+			display: block;
+			line-height: 44px;
+		}
+		.list2 a{
+			width: 86px;
+			background-color: #080809;	
+		}
+		.list3 a{
+			width: 100px;
+		}
+		.list3 i{
+			
+			background: #feda4e;
+			position: absolute;
+			top: 15px;
+			right: 1px;
+			font-style: normal;
+		}
+		.list4 i{
+			
+			background: #feda4e;
+			position: absolute;
+			top: 15px;
+			right: 11px;
+			font-style: normal;
+		}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style type="text/css">
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			.box {
+				width: 100%;
+				height: 100%;
+				background-color:#D1E4EA; 
+				position: absolute;
+				overflow: hidden;
+			}
+			.mountain_1 {
+				width: 800px;
+				height: 800px;
+				background-color: #DCDEDB;
+				border-radius: 50px;
+				transform: rotateZ(45deg);
+				position: absolute;
+				top: 600px;
+				left: 300px;
+
+			}
+			.hill_1 {
+				width: 100%;
+				height: 260px;
+				background-color: #ADDE60;
+				border-top-left-radius: 100%;
+				border-top-right-radius: 160%; 
+				position: absolute;
+				bottom: 0;
+			}
+			.hill_2 {
+				width: 100%;
+				height: 220px;
+				background-color: #93CC3A;
+				border-top-right-radius: 100%; 
+				position: absolute;
+				bottom: 0;
+				left: -100px;
+				
+			}
+			.hill_3 {
+				width: 100%;
+				height: 200px;
+				background-color: #94C943;
+				border-top-left-radius: 100%; 
+				position: absolute;
+				bottom: 0;
+				/**/
+				box-shadow: 0 0 10px 2px #ADDE60;
+			}
+			.mountain_2 {
+				width: 500px;
+				height: 500px;
+				background-color: #CEA392;
+				border-radius: 50px;
+				transform: rotateZ(45deg);
+				position: absolute;
+				top: 650px;
+				left: 0px;
+
+			}
+			.grass {
+				width: 100%;
+				height: 10px;
+				/*background-color: red;*/
+				background-image: linear-gradient(135deg,transparent 0%,transparent 25%,#00AAAA 25%, #00AAAA 100%);
+				background-size: 10px 10px;
+				position: absolute;
+				bottom: 90px;
+			}
+			.road {
+				width: 100%;
+				height: 70px;
+				background-color: #7A7A7A;
+				position: absolute;
+				bottom: 0px;
+				border-bottom: 10px solid #B99F93;
+				border-top: 10px solid #B99F93;
+			
+			}
+			.sun {
+				width: 200px;
+				height: 200px;
+				background-color: #FF9A44;
+				border-radius: 50%;
+
+				box-shadow: 0 0 50px 2px #FFCD37;
+				position: absolute;
+				top: -80px;
+				right: -80px;
+
+			}
+			.line {
+				width: 100%;
+				height: 8px;
+				/*background-color: white;*/
+
+				background-image: repeating-linear-gradient(to right,white 0%,white 10%,transparent 10%, transparent 20%);
+				position: absolute;
+				top: 34px;
+
+					/*z-index: 5;*/
+			}
+			.car {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 50px;
+				background-color: blue;
+				background: url(img/che.png) no-repeat;
+				background-size: 140px 50px;
+				
+
+			}
+			.car>img {
+				width: 30px;
+				height: 30px;
+				
+			}
+			.car>img:nth-child(1) {
+				position: absolute;
+				left: 10px;
+				top: 30px;
+			}
+			.car>img:nth-child(2) {
+				position: absolute;
+				left: 97px;
+				top: 30px;
+			}
+
+			.car {
+				animation-name: run;
+				animation-duration: 10s;
+				animation-timing-function: linear;
+				animation-fill-mode: forwards ;
+				animation-iteration-count: infinite;
+				animation-direction: normal;
+			}
+
+			@keyframes run {
+				
+				20%{
+					margin-left: 20%;
+					margin-top: 10px;
+				}
+				40%{
+					margin-left: 40%;
+					margin-top: -30px;
+				}
+				60%{
+					margin-left: 60%;
+					margin-top: 10px;
+				}
+				80%{
+					margin-left: 80%;
+					margin-top: -30px;
+				}
+				100%{
+					margin-left: 100%;
+					margin-top: 10px;
+				}
+			}
+			
+			.lun {
+				animation-name: rotate;
+				animation-duration: 10s;
+				animation-timing-function: linear;
+				animation-fill-mode: backwards ;
+				animation-iteration-count: infinite;
+			}
+
+			@keyframes rotate {
+				
+				to{
+					transform: rotate(3600deg);
+				} 
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="mountain_1"></div>
+			<div class="hill_1"></div>
+			<div class="hill_2"></div>
+			<div class="hill_3"></div>
+			<div class="mountain_2"></div>
+			<div class="grass"></div>
+			<div class="road">
+				<div class="line"></div>
+				<div class="car">
+					<img class="lun" src="img/lun.png" alt="">
+					<img class="lun" src="img/lun.png" alt="">
+				</div>
+			</div>
+			<div class="sun"></div>
+		</div>
+	</body>
+</html>

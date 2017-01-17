@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>锅打灰太狼</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.container {
+				width: 480px;
+				height: 720px;
+				margin: 0 auto;
+				position: relative;
+				/*background-color: red;*/
+			}
+			.score {
+				position: absolute;
+				left: 100px;
+				top: 20px;
+				color: #FFF;
+			}
+			.background {
+				position: absolute;
+				width: 100%;
+				z-index:-100 ;
+			}
+			.pro {
+				position: absolute;
+				width: 270px;
+				height: 24px;
+				/*background-color: red;*/
+				border-radius:10px;
+				top: 99px;
+				left: 95px;
+				background: url(img/progress.png) 0 0 no-repeat;
+				background-size: 100%;
+				background-position-x: 0px;
+			}
+			.start {
+				width: 250px;
+				border: 0;
+				border-radius: 30px;
+				background: linear-gradient(#E55C3D,#C50000);
+				font-size: 40px;
+				color: #FFF;
+				position: absolute;
+				margin: 0 auto;
+				left: 0;
+				right: 0;
+				top: 400px;	
+			}
+			.start:hover {
+				background: linear-gradient(#C50000,#E55C3D);
+			}
+			.over {
+				text-align: center;
+				font-size: 60px;
+				font-weight: bold;
+				text-shadow: 3px 3px 0 #FFF;
+				background: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(255, 0, 0, 1)), to(rgba(0, 0, 213, 1)));
+				-webkit-background-clip: text;
+			    -webkit-text-fill-color: transparent;
+				position: relative;
+				top: 300px;
+				display:none;
+			}
+			.restart {
+				width: 250px;
+				border: 0;
+				border-radius: 30px;
+				background: linear-gradient(#74ACCF,#007DDC);
+				margin: 0 auto;
+				font-size: 40px;
+				position: absolute;
+				color: #fff;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				top:400px;
+				display: none;
+			}
+			.restart:hover{
+				background: linear-gradient(#007DDC,#74ACCF);
+			}
+			.rules {
+				border: 0;
+				width: 100%;
+				position: absolute;
+				bottom: 0px;
+				font-size: 20px;
+			}
+			.rule {
+				position: absolute;
+				width: 100%;
+				height: 500px;
+				text-align: center;
+				background: #000;
+				opacity: 0.8;
+				padding-top: 200px;
+				padding-bottom: 20px;
+				position: absolute;
+				z-index: 1000000000000;
+				display: none;
+			}
+			.rule p {
+				padding: 20px 0 ;
+				font-size: 20px;
+				color: #FFF;
+			}
+			a {
+				font-size:20px ;
+				color: red;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="score">0</h1>
+			<img class="background" src="img/game_bg.jpg"/>
+			<div class="pro"></div>
+			<button class="start">开始游戏</button>
+			<h1 class="over">GAME OVER</h1>
+			<button class="restart">重新开始</button>
+			<button class="rules">游戏规则</button>
+			<div class="rule">
+				<p>游戏规则:</p>
+				<p>1.游戏时间:60s</p>
+				<p>2.拼手速，殴打灰太狼+10分</p>
+				<p>3.殴打小灰灰-10分</p>
+				<a href="#">[退出]</a>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var container = document.querySelector(".container");
+		var scores = document.querySelector("h1");
+		var start = document.querySelector(".start");
+		var pros = document.getElementsByClassName("pro")[0];
+		var over = document.getElementsByClassName("over")[0];
+		var restart = document.getElementsByClassName("restart")[0];
+		var rules = document.querySelector(".rules");
+		var rule = document.querySelector(".rule");
+		var close = document.querySelector('a');
+		var s = 0;
+		var circle = null;
+		//第一步 点击开始游戏
+		start.onclick = function (){
+			//remove()该方法从选项数组的指定位置移除 <option> 元素。如果指定的下标比 0 小，或者大于或等于选项的数目，remove() 方法会忽略它并什么也不做。
+			// ① 开始按钮移除
+			this.remove();
+			//进度条
+			var proLeft = 0;
+			var timer_pro = setInterval(function(){
+				proLeft-=0.045;
+				//backgroundPositionX 属性设置背景图像的水平位置
+				pros.style.backgroundPositionX = proLeft + 'px';
+				if(proLeft <= -270){
+					clearInterval(timer_pro);
+					clearInterval(circle);
+					over.style.display = "block";
+					restart.style.display = "block";
+				}
+			},5);
+			star();
+			res();
+		}
+		//产生随机数的函数 随机提供狼的位置
+		function rand (min,max){
+			//Math.round 四舍五入，取0~9的随机整数
+			return Math.round(Math.random()*(max-min)+min);
+		}
+		//var secs = rand(1200,1500);
+		//var stay = rand(150,250);
+		//console.log(secs);
+		//console.log(stay);
+		//第二步 第一次开始游戏 创建狼 ① 位置  ② 创建的是小灰灰还是灰太狼
+		function star(){
+			circle = setInterval(function(){
+				//狼随机出现的位置 九个洞的位置
+				var arrPos = [
+					{left:"170px",top:"210px"},
+					{left:"50px",top:"280px"},
+					{left:"45px",top:"370px"},
+					{left:"70px",top:"480px"},
+					{left:"200px",top:"450px"},
+					{left:"330px",top:"480px"},
+					{left:"320px",top:"356px"},
+					{left:"305px",top:"250px"},	
+					{left:"200px",top:"450px"}
+				];
+				//将图片存进数组
+				var wolf_1 = ['img/h0.png','img/h1.png','img/h2.png','img/h3.png','img/h4.png','img/h5.png','img/h6.png','img/h7.png','img/h8.png','img/h9.png'];
+				var wolf_2 = ['img/x0.png','img/x1.png','img/x2.png','img/x3.png','img/x4.png','img/x5.png','img/x6.png','img/x7.png','img/x8.png','img/x9.png'];
+				var appearWolf = ['img/h0.png','img/x0.png'];
+				var newImg = document.createElement("img");
+				container.appendChild(newImg);
+				var wFLocation = rand(0,8);//随机产生狼的位置
+				newImg.style.left = arrPos[wFLocation].left;
+				newImg.style.top = arrPos[wFLocation].top;
+				newImg.style.position = "relative";
+				
+				//选择灰太狼还是小灰灰
+				var X = rand(0,2);
+				if(X < 2){
+					X = 'h';
+				}else{
+					X = 'x';
+				}
+				var y = 0;
+				newImg.style.display = "block";
+				var appear0 = setInterval(function(){
+					newImg.src = 'img/'+ X + y + '.png';
+					y++;
+					var indexs = 0;
+					newImg.onclick = function(){
+						indexs++;
+						if(indexs>1){
+							return false;
+						}
+						y=5;
+						for(var i = 0; i < 4;i++){
+							y++;
+							newImg.src = wolf_1[y];
+							if(y>9){
+								y--;
+							}
+						}
+						if(X == "h"){
+							s+=10;
+							scores.innerHTML = s;
+						}else if (X == 'x'){
+							s-=10;
+							if(s <= 0){
+								s = 0;
+							}
+							scores.innerHTML = s;
+						}
+					}
+					if(y > 5){
+						clearInterval(appear0);
+						setTimeout(function(){
+							y = 5;
+							var appear1 = setInterval(function(){
+								newImg.src = 'img/' + X + y + '.png';
+								//console.log(y);
+								y--;
+								if(y<0){
+									clearInterval(appear1);
+									//newImg.style.display = "none";
+									newImg.remove();
+								}
+							},50);
+						},194);
+					}
+				},50);
+			},1382);
+			s = 0;
+			scores.innerHTML = s;
+		}
+		
+		//设置重开开始
+		function res(){
+			restart.onclick = function(){
+				//按钮隐藏
+				restart.style.display = "none";
+				over.style.display = "none";
+				var proLeft = 0;
+				var timer_pro = setInterval(function(){
+					proLeft -= 0.045;
+					pros.style.backgroundPositionX=proLeft+'px';
+					if (proLeft <= -270) {
+						clearInterval(circle);
+						clearInterval(timer_pro);
+						over.style.display='block';
+						restart.style.display='block';
+					}
+				},5);
+				star();
+			}
+		}
+		// 设置游戏规则
+		rules.onclick = function(){
+			rule.style.display = "block";
+		}
+		close.onclick = function(){
+			rule.style.display = "none";
+		}
+	</script>
+</html>

@@ -1,0 +1,179 @@
+.head_box{
+	height: 36px;
+	background-color: #FAFAFA;
+	border-bottom: 1px solid #dfdfdf;
+	position: relative;
+	z-index: 150;
+
+}
+.head_inf{
+	width: 1210px;
+	height: 36px;
+	margin: 0 auto;
+	position: relative;
+}
+.city{
+	float: left;
+	position: relative;
+	/*list-style: none;*/
+}
+.city>li, .user>li{
+	display: inline-block;
+	line-height: 36px;
+	position: relative;
+	color: #8c8c8c;
+	border-left: 1px solid #fafafa;
+	border-right: 1px solid #fafafa; 
+}
+.city_change:hover, .mynuomi:hover, .phonenm:hover, .zjll:hover, .wssj:hover, .gz:hover{
+	border-left: 1px solid #dfdfdf!important;
+	border-right: 1px solid #dfdfdf!important;
+	height: 38px;
+	right: -2px;
+}
+.head_inf ul li a:hover{
+	color: #73adc9;
+}
+.city_change:hover>a, .phonenm:hover>a, .mynuomi:hover>a, .zjll:hover>a, .wssj:hover>a, .gz:hover>a{
+	position: relative;
+	z-index: 1000;
+	height: 38px;
+	padding: 0 8px 0 12px;
+	background: #fff
+}
+.c_c_c:hover .down_logo, .mynuomi:hover .down_logo, .phonenm:hover .down_logo, .zjll:hover .down_logo, .wssj:hover .down_logo, .gz:hover .down_logo {
+	position: relative;
+	/*旋转*/
+	transform: rotate(180deg);
+	/*延时*/
+	transition: .3s;
+	top: -2px;
+}
+.city_city{
+	padding-right: 10px;
+}
+.sep_lines{
+	position: absolute;
+	display: block;
+	border-left: 1px solid #dfdfdf;
+	top: 50%;
+	right: -1px;
+	height: 12px;
+	width: 1px;
+	margin-top: -6px;
+}
+.city_change:hover .down_city{
+	display: block;
+} 
+.down_city{
+	position: absolute;
+	top: 36px;
+	display: none;
+	left: -1px;
+	line-height: 13px;
+	width: 175px;
+	border:1px solid #dfdfdf;
+	background: #fff;
+	padding: 15px 12px;
+	z-index: 10;
+}
+.down_city h3{
+	color: #73adc9;
+	margin-bottom: 10px;
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	font-weight: 500;
+
+}
+.down_city ul li{
+	display: inline-block;
+	margin: 0 10px 10px 0;
+}
+.down_city ul li a{
+	color: #666
+
+}
+.morecity{
+	float: right;
+	color: #8c8c8c;
+	cursor: pointer;
+}
+.user{
+	float: right;
+}
+.city>li>a,.user>li>a{
+	line-height: 36px;
+	padding: 0 10px;
+	height: 36px;
+	display: block;
+}
+.head_code{
+			width: 132px;
+		}
+		.head_code{
+			position: absolute;
+			display: none;
+			top: 36px;
+			left: -1px;
+			border: 1px solid #dfdfdf;
+			background: #fff;
+			z-index: 200;
+		}
+		.phonenm:hover .head_code{
+			display: block;
+			height: 142px;
+			text-align: center;
+			overflow: hidden;
+			background-repeat: no-repeat;
+		}
+		.user_list, .zjll_menu, .wssj_menu{
+			position: absolute;
+			display: none;
+			top: 36px;
+			left: -1px;
+			width: 86px;
+			border:1px solid #dfdfdf;
+			background: #fff;
+			z-index: 200;
+		}
+		.gz_menu{
+			position: absolute;
+			display: none;
+			top: 36px;
+			right: -1px;
+			padding: 15px;
+			text-align: center;
+			width: 135px;
+			border:1px solid #dfdfdf;
+			background: #fff;
+			z-index: 200;
+		}
+		.gz_menu_img{
+			width: 116px;
+			height: 116px;
+			background: url(img/gongzhonghao.png);
+			margin: 0 auto;
+		}
+		.zjll_menu_list{
+			height: 74px;
+			line-height: 74px;
+			text-align: center;
+		}
+		.zjll:hover .zjll_menu{
+			display: block;
+		}
+		.user_list a,.wssj_menu>a{
+			display: block;
+			height: 30px;
+			line-height: 30px;
+			padding-left: 13px;
+			color: #73abc9;
+			cursor: pointer;
+		}
+		.user_list a:hover{
+			background-color: blue;
+		}
+		.mynuomi:hover .user_list, .wssj:hover .wssj_menu, .gz:hover .gz_menu{
+			display: block;
+		}

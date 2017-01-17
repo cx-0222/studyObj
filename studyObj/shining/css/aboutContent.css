@@ -1,0 +1,80 @@
+.about_map {
+	background: url(../img/world_map.png) center center no-repeat;
+	background-color: #e3e3e3;
+	padding-bottom: 2em;
+}
+
+.aboutwrap {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.j_content {
+	text-align: center;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.j_content_text {
+	width: 490px;
+	text-align: left;
+	padding-top: 100px;
+	padding-left: 10px;
+}
+
+.j_content_text p {
+	word-break: break-all;
+}
+
+.about_title h3 {
+	font-size: 1.8em;
+	margin-bottom: 20px;
+	font-weight: normal;
+}
+
+.share_logo_wrap {
+	margin: 0 auto;
+}
+
+.clear {
+	overflow: hidden;
+	zoom: 1;
+}
+
+.share_logo_wrap ul li {
+	float: left;
+	height: 75px;
+	margin-bottom: 10px;
+	text-align: left;
+	margin-right: 59px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 640px) {
+	.j_content>div>img {
+		max-width: 170px;
+	}
+	.j_content>.j_content_text {
+		width: 95%;
+		word-break: break-all;
+	}
+	.line_title {
+					width: 80%;
+				}
+				.line_title>i {
+					width: 25%;
+					font-size: 1em;
+				}
+				.line_title>span {
+					font-size: 1em;
+					width: 50%;
+				}
+	.j_content_text {
+		width: 95%;
+	}
+	.j_content_text p {
+		font-size: 0.9em;
+	}
+	.footer_wrap1 {
+		padding-top: 0px;
+	}
+}

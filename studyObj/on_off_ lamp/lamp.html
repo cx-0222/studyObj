@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>开关灯</title>
+	<style type="text/css">
+		#lightBox {
+			width: 335px;
+			height: 335px;
+			margin: 100px auto;
+		}
+		#lightBox>div {
+			width: 65px;
+			height: 65px;
+			margin: 1px;
+			float: left;
+			/*background-color: red;*/
+			/*background-image:  url(1.jpg);*/
+		}
+	</style>
+</head>
+<body>
+	<!-- <div id="lightBox" onclick="initGame()"> -->
+	<div id="lightBox">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</body>
+	<script type="text/javascript">
+		var lights = document.querySelectorAll("#lightBox>div");
+		//alert(lights[0].style.backgroundImage);//无法打印
+
+		//初始化游戏
+		function initGame(){
+			//循环赋初值
+			for(var i = 0; i < lights.length; i++){
+				lights[i].style.backgroundImage = 'url(on.jpg)';
+				//alert(lights[0].style.backgroundImage);//可以打印
+
+				// 给每个div设置一个索引，方便知道点击的具体是哪一个
+				// 给 i+1 的理由是和nth:child()--对应
+				lights[i].index = i + 1;
+
+
+				//绑定的方法
+				//可以通过与已知的函数名直接绑定
+				lights[i].onclick = eleClick;
+			}
+
+		}
+		initGame();
+		//设置点击切换图片事件
+		//onclick="changeImg()"只是点击调用方法，而不是绑定了方法，所以this找不到绑定的方法，所以无法打印,this是window层
+		//lights[23].onclick = function changeImg(){
+			//判断背景图片(得取出来)
+			//满足切换，不满足不切换
+			//console.log (this.style.backgroundImage);
+		//}
+		//一个匿名函数和一个对象的事件绑定之后，在匿名函数的内部使用this，这个this代表激活这个事件的对象
+		//function changeImg(obj){
+			//判断背景图片(得取出来)
+			//满足切换，不满足不切换
+			//console.log (obj.style.backgroundImage);
+		//}
+
+
+		function eleClick(){
+			//alert(this.index);//不可以用lights[i]，因为i只有在遍历的时候用，此时的i变成了25，数组越界，打印undefined
+
+				//获取当前点击的节点位置，通过它可以找到上下左右
+				var index = this.index;
+				//alert(index);
+				
+				changeImg(this);//自身
+
+				//上方
+				if(index > 5){
+					// var top = document.querySelector("#lightBox>div:nth-child("+(index-5)+")");
+					// changeImg(top);
+					changeElement(index,-5);
+				}
+
+				if(index <= 20){
+					// var bottom = document.querySelector("#lightBox>div:nth-child("+(index+5)+")");
+					// changeImg(bottom);
+					changeElement(index,5);
+				}
+
+				if(index%5 != 1){
+					// var left = document.querySelector("#lightBox>div:nth-child("+(index-1)+")");
+					// changeImg(left);
+					changeElement(index,-1);
+				}
+
+				if(index%5 != 0){
+					// var right = document.querySelector("#lightBox>div:nth-child("+(index+1)+")");
+					// changeImg(right);
+					changeElement(index,1);
+				}
+				//判断是否过关
+			isSuccess();
+		}
+
+		//var count = 0;
+		function isSuccess(){
+			var count = 0;
+			for (var i = 0; i < lights.length; i++) {
+					if (lights[i].style.backgroundImage == 'url("off.jpg")') {
+						count = count + 1;
+						//console.log(count);
+					}
+				}
+				var timer = setTimeout(function(){
+						if(count == 25){
+						//console.log("game over");
+						alert("game over");
+						clearTimeout(timer);
+						timer = null;
+						initGame();
+					}
+				},30);
+			
+		}
+		
+		function changeElement(index, num){
+			var obj = document.querySelector("#lightBox>div:nth-child("+(index+num)+")");
+			changeImg(obj);
+		}
+		
+		//切换背景图片
+		function changeImg(obj){
+			var img = obj.style.backgroundImage;
+			if (img.match("on")) {
+				obj.style.backgroundImage = "url(off.jpg)";
+			}else {
+				obj.style.backgroundImage = "url(on.jpg)";
+			}
+		}
+
+	</script>
+
+</html>

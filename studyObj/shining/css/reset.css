@@ -1,0 +1,27 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 100%;
+	font-family: Arial, sans-serif, Microsoft YaHei;
+}
+
+#wrap {
+	width: 100%;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	outline: none;
+}
+
+p,
+span {
+	font-family: arial;
+}

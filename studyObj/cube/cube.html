@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<style type="text/css">
+
+			body {
+				position: relative;
+			}
+		/*路的样式*/
+			.road {
+				width:100%;
+				height: 200px;
+				background-image: -webkit-linear-gradient(left top,#94C943 0% ,#94C943 25%,white 25%,white 50%,#94C943 50%,#94C943 75%,white 75%,white 100% );
+				background-size: 100px 50%;
+				position: absolute;
+				/*background-repeat: no-repeat;*/
+				
+			}
+		/*舞台样式*/
+			.stage {
+				width: 200px;
+				height: 200px;
+				border: 1px solid transparent;
+				margin: 200px auto;
+				position: relative;
+				transform-style: preserve-3d;
+				transform: rotateX(45deg) rotateY(45deg);
+
+			}
+		/*里层元素样式*/
+			.ele1, .ele2, .ele3, .ele4, .ele5, .ele6 {
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				top: 50px;
+				left: 50px;
+			}
+		/*外层元素样式*/
+			.ele7, .ele8, .ele9, .ele10, .ele11, .ele12 {
+				width: 200px;
+				height: 200px;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		/*里层元素背景图片样式*/
+			.ele1, .ele2, .ele3, .ele4, .ele5, .ele6 img {
+				width: 100px;
+				height: 100px;
+			}
+		/*外层元素背景图片样式*/
+			.ele7, .ele8, .ele9, .ele10, .ele11, .ele12 img {
+				width: 200px;
+				height: 200px;
+			}
+		/*里层元素位置*/
+			.ele1 {
+				/*background-color: blue;*/
+				transform: rotateY(0deg) translateZ(50px);
+			} 
+			.ele2 {
+				/*background-color: gray;*/
+				transform: rotateY(90deg) translateZ(50px);
+			} 
+			.ele3 {
+				/*background-color: cyan;*/
+				transform: rotateY(180deg) translateZ(50px);
+			} 
+			.ele4 {
+				/*background-color: pink;*/
+				transform: rotateY(270deg) translateZ(50px);
+			} 
+			.ele5 {
+				/*background-color: green;*/
+				transform: rotateX(90deg) translateZ(50px);
+			} 
+			.ele6 {
+				
+				transform: rotateX(-90deg) translateZ(50px);
+			} 
+		
+		/*外层元素位置*/
+			.ele7 {
+				
+				transform: rotateY(0deg) translateZ(100px);
+			} 
+			.ele8 {
+				
+				transform: rotateY(90deg) translateZ(100px);
+			} 
+			.ele9 {
+				
+				transform: rotateY(180deg) translateZ(100px);
+			} 
+			.ele10 {
+				
+				transform: rotateY(270deg) translateZ(100px);
+			} 
+			.ele11 {
+				
+				transform: rotateX(90deg) translateZ(100px);
+			} 
+			.ele12 {
+				
+				transform: rotateX(-90deg) translateZ(100px);
+			} 
+		/*外层元素背景图片hover效果 */
+			.stage:hover .img7 {
+				transition: 2s ;
+				/*transform: scale(1.5);*/
+			}
+			.stage:hover .img8 {
+				transition: 2s ;
+				/*transform: scale(1.5);*/
+			}
+			.stage:hover .img9 {
+				transition: 2s ;
+				/*transform: scale(1.5);*/
+			}
+			.stage:hover .img10 {
+				transition: 2s ;
+				/*transform: scale(1.5);*/
+			}
+			.stage:hover .img11 {
+				transition: 2s ;
+				/*transform: scale(1.5);*/
+			}
+			.stage:hover .img12 {
+				transition: 2s ;
+				/*transform: scale(1.5);*/
+			}
+
+
+			.stage:hover .ele7 {
+				transition: 2s ;
+				/*transform: scale(1.5);*/
+				transform: rotateY(0deg) translateZ(200px);
+			}
+			.stage:hover .ele8 {
+				transition: 2s ;
+				/*transform: scale(1.5);*/
+				transform: rotateY(90deg) translateZ(200px);
+			}
+			.stage:hover .ele9 {
+				transition: 2s ;
+				/*transform: scale(1.5);*/
+				transform: rotateY(180deg) translateZ(200px);
+			}
+			.stage:hover .ele10 {
+				transition: 2s ;
+				/*transform: scale(1.5);*/
+				transform: rotateY(270deg) translateZ(200px);
+			}
+			.stage:hover .ele11 {
+				transition: 2s ;
+				/*transform: scale(1.5);*/
+				transform: rotateX(90deg) translateZ(200px);
+			}
+			.stage:hover .ele12 {
+				transition: 2s ;
+				/*transform: scale(1.5);*/
+				transform: rotateX(-90deg) translateZ(200px);
+			}
+
+
+		/*路的动画效果*/
+			.road {
+				animation-name:run;
+				animation-duration:2s;
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+				animation-fill-mode: backwards ;
+				animation-direction: normal;
+			}
+			@keyframes run {
+				0% {
+					background-position: 0px 0px ;
+				}
+				100% {
+					background-position: 100px 0px;
+				}
+			}
+
+		/*舞台动画效果*/
+			.stage {
+
+				animation-name:rotate;
+				animation-duration:20s;
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+			}
+			@keyframes rotate {
+				to {
+					transform: rotateX(3600deg) rotateY(3600deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="road"></div>
+		<div class="eye">
+			<div class="stage">
+				<div class="ele1"><img src="img/cube.jpg" alt=""></div>
+				<div class="ele2"><img src="img/cube.jpg" alt=""></div>
+				<div class="ele3"><img src="img/cube.jpg" alt=""></div>
+				<div class="ele4"><img src="img/cube.jpg" alt=""></div>
+				<div class="ele5"><img src="img/cube.jpg" alt=""></div>
+				<div class="ele6"><img src="img/cube.jpg" alt=""></div>
+
+				<div class="ele7"><img class="img7" src="img/1.jpg" alt=""></div>
+				<div class="ele8"><img class="img8" src="img/2.jpg" alt=""></div>
+				<div class="ele9"><img class="img9" src="img/3.jpg" alt=""></div>
+				<div class="ele10"><img class="img10" src="img/4.jpg" alt=""></div>
+				<div class="ele11"><img class="img11" src="img/5.jpg" alt=""></div>
+				<div class="ele12"><img class="img12" src="img/6.jpg" alt=""></div>
+			</div>
+		</div>
+	</body>
+</html>

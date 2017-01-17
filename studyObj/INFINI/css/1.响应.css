@@ -1,0 +1,55 @@
+@media only screen and (min-width: 824px) and (max-width: 1200px) {
+	.top {
+		width: 78.8%;
+		/*height: 76vh;*/
+		/*background-color: red;*/
+	}
+	.top1 {
+		width: 100%;
+		/*height: 52vh;*/
+		margin: 0 auto;
+		text-align: center;
+	}
+	.top1>img {
+		width: 100%;
+	}
+	.top1_1 {
+		width: 78.8%;
+	}
+	.top2 {
+		width: 100%;
+	}
+	.top3 {
+		width: 100%;
+	}
+	.top3>img {
+		width: 100%;
+	}
+	.content {
+		width: 78.8%;
+		/*height: 85.6%;*/
+	}
+	.content>div {
+		width: 30.9%;
+	}
+
+	ul {
+		width: 100%;
+		height: 85%;
+	}
+	ul>li:nth-child(1) {
+		font-size: 32px;
+		margin-top:18%;
+	}
+	.content>div:nth-child(1),
+	.content>div:nth-child(2),
+	.content>div:nth-child(4),
+	.content>div:nth-child(5),.content>div:nth-child(7),.content>div:nth-child(8){
+		margin-right: 3.63%;
+	}
+	.content>div img {
+		width: 100%;
+		/*height: 209px;*/
+	}
+	
+}
